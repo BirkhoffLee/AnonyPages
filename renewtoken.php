@@ -76,6 +76,10 @@ function postAccessToken() {
                     });
                 });
             });
+        } else {
+            FB.login(function (response) {
+                postAccessToken();
+            });
         }
     });
 }
