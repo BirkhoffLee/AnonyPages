@@ -11,48 +11,48 @@
 </head>
 
 <body>
-  <form method="post">
+    <form method="post" action="/">
 
-    <h1>{{page_name}}</h1>
+        <h1>{{page_name}}</h1><div class="fb-like"></div>
 
-    <label style="text-align: center">
-      請寫下靠北內容，按下發文按鈕，就會自動發<br />
-      文到 <a href="{{page_url}}" target="_blank">{{page_name}}</a>。
-      如您確認提交了靠北文，即表示<br />
-      您同意我們的使用條約。{{tip}}
-    </label>
+        <label style="text-align: center">
+            請寫下靠北內容，按下發文按鈕，就會自動發<br />
+            文到 <a href="{{page_url}}" target="_blank">{{page_name}}</a>。
+            如您確認提交了靠北文，即表示<br />
+            您同意我們的使用條約。{{tip}}
+        </label>
 
-    <br />
-
-    <fieldset>
-      <legend><span class="number">1</span>&nbsp;{{post_label}}</legend>
-      <textarea id="post" name="post" placeholder="{{post_placeholder}}" rows="9" style="resize: vertical"></textarea>
-    </fieldset>
-
-    <fieldset>
-      <legend><span class="number">2</span>&nbsp;使用條款</legend>
-      <label>
-        <b>如您確認提交了靠北文，即表示您同意我們的使用條約</b>：
-        <br />{{terms}}<br />
-      </label>
-    </fieldset>
-
-    <fieldset>
-      <legend><span class="number">3</span>&nbsp;人類驗證</legend>
-      <div class="g-recaptcha" data-sitekey="{{gRsitekey}}"></div>
-    </fieldset>
-
-    <input type="hidden" id="action" name="action" value="post" />
-    <button type="submit" id="submit">提交貼文</button>
-
-    <div style="text-align: center">
         <br />
-        <small>
-            <a href="https://www.facebook.com/KaoBeiAVA" target="_blank">此系統由靠北 AVA 提供</a>
-        </small>
-    </div>
-    <br />
-  </form>
+
+        <fieldset>
+            <legend><span class="number">1</span>&nbsp;{{post_label}}</legend>
+            <textarea id="post" name="post" placeholder="{{post_placeholder}}" rows="9" style="resize: vertical"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend><span class="number">2</span>&nbsp;使用條款</legend>
+            <label>
+                <b>如您確認提交了靠北文，即表示您同意我們的使用條約</b>：
+                <br />{{terms}}<br />
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend><span class="number">3</span>&nbsp;人類驗證</legend>
+            <div class="g-recaptcha" data-sitekey="{{gRsitekey}}"></div>
+        </fieldset>
+
+        <input type="hidden" id="action" name="action" value="post" />
+        <button type="submit" id="submit">提交貼文</button>
+
+        <div style="text-align: center">
+            <br />
+            <small>
+                <a href="https://www.facebook.com/KaoBeiAVA" target="_blank">此系統由靠北 AVA 提供</a>
+            </small>
+        </div>
+        <br />
+    </form>
 </body>
 
 </html>
