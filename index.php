@@ -6,27 +6,6 @@
     Please keep this comment at the beginning
     of this file in order to respect the oringin
     author.
-    
-    MIT License:
-    Copyright (c) 2015 Birkhoff Lee
-    
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-    
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
  */
 
 header("Content-type: text/html; charset=utf-8");
@@ -40,18 +19,10 @@ ini_set("display_errors", '0');
 error_reporting(0);
 
 /*
-    Settings
+    Load settings
  */
-$page_name    = ""; // Site name
-$page_id      = ""; // Page ID
-$page_url     = ""; // Page URL. Example: https://www.facebook.com/KaoBeiAVA
-$access_token = ""; // Page Access Token. http://goo.gl/W1o9TI
-$last         = ""; // Will be added to the end of each posts
-$gRsitekey    = ""; // Google Recaptcha Site
-$gRsecret     = ""; // Google Recaptcha Secret
-$post_label   = ""; // A text before the post input box.
-$post_phodr   = ""; // The placeholder of the post input box.
-$terms        = ""; // ToS (You should add "<br>" at the end of each lines expect for the last line)
+require_once(__DIR__ . "/config.php");
+global $page_name, $page_id, $page_url, $access_token, $last, $gRsecret, $post_label, $post_phodr, $terms;
 
 /*
     Facebook Graph API URLs
@@ -172,9 +143,9 @@ $resJson = json_decode($response, true);
 if (isset($resJson["id"]) and $resJson["id"] != "") {
     $__temp = explode('_', $resJson["id"]);
     if (!isset($__temp[1])) {
-        render("提交成功：貼文應該已經發佈。請前往<a href=\"{$page_url}\">這裡</a>查看", true);
+        render("提交成功：貼文應該已經發佈。", true);
     } else {
-        render("提交成功：<a href=\"{$page_url}/posts/" . $__temp[1] . "\">貼文</a>已發佈。", true);
+        render("提交成功：<a href=\"https://www.facebook.com/permalink.php?story_fbid=" . $__temp[1] . "&id={$page_id}\" target=\"_blank\">貼文</a>已成功發佈。為了日後方便尋<br />找您的貼文，請記住您的貼文標籤：<a href=\"https://www.facebook.com/hashtag/{$page_name}{$id}?story_id=" . $__temp[1] . "\" target=\"_blank\">#{$page_name}{$id}</a>", true);
     }
 } else {
     render("提交失敗：系統錯誤（錯誤辨識碼: 1），請私訊粉絲專頁。", false);
