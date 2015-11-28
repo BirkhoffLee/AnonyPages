@@ -99,5 +99,5 @@ fclose($fp);
 printResult(array(
     "code" => 0,
     "msg" => "Token updated.",
-    "pagetoken" => $newToken
+    // "pagetoken" => $newToken
     ));
