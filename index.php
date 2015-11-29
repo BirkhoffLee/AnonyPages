@@ -81,6 +81,10 @@ function verifyHuman ($g_recaptcha_response) {
     }
 }
 
+function startsWith($str, $find) {
+    return $find === "" || strrpos($str, $find, -strlen($str)) !== FALSE;
+}
+
 /*
     Echo html codes
  */
@@ -106,12 +110,21 @@ if (!verifyHuman($_POST["g-recaptcha-response"])) {
  */
 $posts = json_decode(file_get_contents($urlGetPosts), true);
 
-if (!isset($posts["data"][0]["message"])) {
+if (!isset($posts["data"])) {
     render("提交失敗：系統錯誤（錯誤辨識碼: 0），請私訊粉絲專頁。", false);
 }
-$_temp = explode(' ', trim($posts["data"][0]["message"]));
-$id = substr($_temp[0], strlen("#" . $page_name));
-$id = strval(intval($id) + 1);
+foreach ($posts["data"] as $key => $value) {
+    if (startsWith($value["message"], "#" . $page_name)) {
+        $_temp = explode(' ', trim($value["message"]));
+        $id = substr($_temp[0], strlen("#" . $page_name));
+        $id = strval(intval($id) + 1);
+        break;
+    }
+}
+
+if (!isset($id)) {
+    render("提交失敗：系統錯誤（錯誤辨識碼: 1），請私訊粉絲專頁。", false);
+}
 
 /*
     Post time
@@ -148,5 +161,5 @@ if (isset($resJson["id"]) and $resJson["id"] != "") {
         render("提交成功：<a href=\"https://www.facebook.com/permalink.php?story_fbid=" . $__temp[1] . "&id={$page_id}\" target=\"_blank\">貼文</a>已成功發佈。為了日後方便尋<br />找您的貼文，請記住您的貼文標籤：<a href=\"https://www.facebook.com/hashtag/{$page_name}{$id}?story_id=" . $__temp[1] . "\" target=\"_blank\">#{$page_name}{$id}</a>", true);
     }
 } else {
-    render("提交失敗：系統錯誤（錯誤辨識碼: 1），請私訊粉絲專頁。", false);
+    render("提交失敗：系統錯誤（錯誤辨識碼: 2），請私訊粉絲專頁。", false);
 }
