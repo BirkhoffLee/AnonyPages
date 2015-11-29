@@ -6,76 +6,80 @@
     complete editing the configuration
  */
 
+global $config;
 // ======================
 
 /*
-    Site name
+    Common
  */
-global $page_name;
-$page_name    = "";
+
+// Fill in "DEBUG" if you are getting into trouble
+// otherwise, fill in "PRODUCTION"
+define("RUN_STATE", "PRODUCTION");
+
+// Facebook App ID
+$config["global"]["app_id"]     = "";
+
+// Facebook App Secret
+$config["global"]["app_secret"] = "";
+
+// Google Recaptcha Site Key
+$config["global"]["gRsitekey"]  = "";
+
+// Google Recaptcha Secret Key
+$config["global"]["gRsecret"]   = "";
 
 /*
-    App ID
+    Settings for each pages
  */
-global $app_id;
-$app_id       = "";
+
+// ===================
+
 
 /*
-    App Secret
+    First page
  */
-global $app_secret;
-$app_secret   = "";
+                                    // Page ID
+$pageid                             = "";
+                                    // Page name
+$config[$pageid]["page_name"]       = "";
+                                    // Post hashtags
+$config[$pageid]["hashtag"]         = "";
+                                    // Page URL
+$config[$pageid]["page_url"]        = "";
+                                    // Additional text after each posts
+$config[$pageid]["last"]            = "";
+                                    // The text before the post input box
+$config[$pageid]["post_label"]      = "";
+                                    // The placeholder of the post input box.
+$config[$pageid]["post_phodr"]      = "";
+                                    // ToS (You should add "<br>" at the end of each lines expect for the last line)
+$config[$pageid]["terms"]           = "";
+
+$config[$pageid]["access_token"] = ""; // FILL THIS WITH THE PAGE ID!!
+
+// ===================
 
 /*
-    Page ID
+    Second page
  */
-global $page_id;
-$page_id      = "";
+                                    // Page ID
+$pageid                             = "";
+                                    // Page name
+$config[$pageid]["page_name"]       = "";
+                                    // Post hashtags
+$config[$pageid]["hashtag"]         = "";
+                                    // Page URL
+$config[$pageid]["page_url"]        = "";
+                                    // Additional text after each posts
+$config[$pageid]["last"]            = "";
+                                    // The text before the post input box
+$config[$pageid]["post_label"]      = "";
+                                    // The placeholder of the post input box.
+$config[$pageid]["post_phodr"]      = "";
+                                    // ToS (You should add "<br>" at the end of each lines expect for the last line)
+$config[$pageid]["terms"]           = "";
 
-/*
-    Page URL. Example: https://www.facebook.com/KaoBeiAVA
- */
-global $page_url;
-$page_url     = "";
+$config[$pageid]["access_token"] = ""; // FILL THIS WITH THE PAGE ID!!
 
-/*
-    Page Access Token
- */
-global $access_token;
-$access_token = "";
-
-/*
-    This will be added to the end of each posts
- */
-global $last;
-$last         = "";
-
-/*
-    Google Recaptcha Site Key
- */
-global $gRsitekey;
-$gRsitekey    = "";
-
-/*
-    Google Recaptcha Secret
- */
-global $gRsecret;
-$gRsecret     = "";
-
-/*
-    A text before the post input box.
- */
-global $post_label;
-$post_label   = "";
-
-/*
-    The placeholder of the post input box.
- */
-global $post_phodr;
-$post_phodr   = "";
-
-/*
-    ToS (You should add "<br>" at the end of each lines expect for the last line)
- */
-global $terms;
-$terms        = "";
+// or more.....

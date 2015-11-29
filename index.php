@@ -8,21 +8,65 @@
     author.
  */
 
+
 header("Content-type: text/html; charset=utf-8");
 ini_set("date.timezone", "Asia/Taipei");
 date_default_timezone_set("Asia/Taipei");
 
-/*
-    Production error displaying settings
- */
-ini_set("display_errors", '0');
-error_reporting(0);
 
 /*
     Load settings
  */
 require_once(__DIR__ . "/config.php");
-global $page_name, $page_id, $page_url, $access_token, $last, $gRsecret, $post_label, $post_phodr, $terms;
+global $config;
+
+
+/*
+    Error displaying settings
+ */
+if (RUN_STATE == "DEBUG") {
+    ini_set("display_errors", 'on');
+    error_reporting(E_ALL);
+} else {
+    ini_set("display_errors", 'off');
+    error_reporting(0);
+}
+
+
+/*
+    Get the page we are working
+ */
+if (!isset($_GET["pageid"]) or $_GET["pageid"] == "") {
+    die("<h2>Page ID not given</h2>");
+}
+
+$page_id = $_GET["pageid"];
+if (!isset($config[$page_id])) {
+    die("<h2>Invaild page id</h2>");
+}
+
+
+/*
+    Load settings to global vars
+ */
+$settingsToLoad = [
+    "page_name", "page_url",
+    "access_token", "last",
+    "post_label", "post_phodr",
+    "terms"];
+foreach ($settingsToLoad as $key => $value) {
+    global $$value;
+    $$value = $config[$page_id][$value];
+}
+
+$globalSettingsToLoad = [
+    "app_id", "app_secret",
+    "gRsitekey", "gRsecret"];
+foreach ($globalSettingsToLoad as $_key => $_value) {
+    global $$_value;
+    $$_value = $config["global"][$_value];
+}
+
 
 /*
     Facebook Graph API URLs
@@ -81,10 +125,6 @@ function verifyHuman ($g_recaptcha_response) {
     }
 }
 
-function startsWith($str, $find) {
-    return $find === "" || strrpos($str, $find, -strlen($str)) !== FALSE;
-}
-
 /*
     Echo html codes
  */
@@ -134,7 +174,8 @@ $time = "\n\n文章發佈時間：" . date('Y-m-d  H:i:s');
 /*
     Convert vars into postfields
  */
-$vars = 'message=' . urlencode("#{$page_name}{$id}\n" . $_POST["post"] . "{$time}\n{$last}") . '&access_token=' . $access_token;
+$add = ($last != "") ? "\n{$last}" : "";
+$vars = 'message=' . urlencode("#{$page_name}{$id}\n" . $_POST["post"] . "{$time}{$add}") . '&access_token=' . $access_token;
 
 /*
     Send request

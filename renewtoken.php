@@ -1,7 +1,18 @@
 <?php
 $filename = __DIR__ . "/config.php";
 require_once($filename);
-global $app_id;
+global $config;
+
+/*
+    Error displaying settings
+ */
+if (RUN_STATE == "DEBUG") {
+    ini_set("display_errors", 'on');
+    error_reporting(E_ALL);
+} else {
+    ini_set("display_errors", 'off');
+    error_reporting(0);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +42,7 @@ userName = "";
 
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '<?php echo $app_id; ?>',
+        appId      : '<?php echo $config["global"]["app_id"]; ?>',
         cookie     : true,
         version    : 'v2.2',
         xfbml      : true,
