@@ -175,7 +175,7 @@ $time = "\n\n文章發佈時間：" . date('Y-m-d  H:i:s');
     Convert vars into postfields
  */
 $add = ($last != "") ? "\n{$last}" : "";
-$vars = 'message=' . urlencode("#{$page_name}{$id}\n" . $_POST["post"] . "{$time}{$add}") . '&access_token=' . $access_token;
+$vars = 'message=' . urlencode("{$hashtag}{$id}\n" . $_POST["post"] . "{$time}{$add}") . '&access_token=' . $access_token;
 
 /*
     Send request
