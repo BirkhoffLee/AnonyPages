@@ -36,6 +36,7 @@ $_page_names = substr($_page_names, 0, strlen($_page_names) - 1);
 <head>
 <title>監控新貼文 - 由靠北AVA提供的靠北系統</title>
 <meta charset="UTF-8">
+<link href="../favicon.ico" rel="shortcut icon">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <style type="text/css">
     body {

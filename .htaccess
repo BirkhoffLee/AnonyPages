@@ -1,5 +1,6 @@
 Options -Indexes
 
 RewriteEngine On
+RewriteRule ^notification - [L,NC]
 RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?pageid=$1
 RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?pageid=$1

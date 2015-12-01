@@ -20,6 +20,7 @@ if (RUN_STATE == "DEBUG") {
 <title>更新 Page Access Token - 由靠北AVA提供的靠北系統</title>
 <meta charset="UTF-8">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link href="favicon.ico" rel="shortcut icon">
 <style type="text/css">
     body {
         background-color: #e9eaed;
