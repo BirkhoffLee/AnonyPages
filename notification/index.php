@@ -124,8 +124,8 @@ function monitorPosts () {
                     var icon = "https://graph.facebook.com/v2.5/" + key + "/picture?type=normal";
                     var postid = nowIDs[key].split("_")[1];
 
-                    pushNotification(icon, "有新的貼文發佈了！", pageNames[key], function () {
-                        window.open("https://www.facebook.com/permalink.php?story_fbid=" + postid + "&id=" + key);
+                    pushNotification(icon, "粉絲專頁的最新一篇貼文有更動！", pageNames[key], function () {
+                        window.open("https://www.facebook.com/" + key + "/posts/" + postid);
                     });
                 }
             }

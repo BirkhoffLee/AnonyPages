@@ -53,7 +53,7 @@ $settingsToLoad = [
     "page_name", "page_url",
     "access_token", "last",
     "post_label", "post_phodr",
-    "terms"];
+    "terms", "hashtag"];
 foreach ($settingsToLoad as $key => $value) {
     global $$value;
     $$value = $config[$page_id][$value];
@@ -89,6 +89,10 @@ function render ($tip, $status) {
     global $page_name;
     $code = str_replace("{{page_name}}", $page_name, $code);
 
+    /* {{page_id}} */
+    global $page_id;
+    $code = str_replace("{{page_id}}", $page_id, $code);
+
     /* {{page_url}} */
     global $page_url;
     $code = str_replace("{{page_url}}", $page_url, $code);
@@ -123,6 +127,10 @@ function verifyHuman ($g_recaptcha_response) {
     } else {
         return false;
     }
+}
+
+function startsWith($haystack, $needle) {
+    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== FALSE;
 }
 
 /*
@@ -199,7 +207,7 @@ if (isset($resJson["id"]) and $resJson["id"] != "") {
     if (!isset($__temp[1])) {
         render("提交成功：貼文應該已經發佈。", true);
     } else {
-        render("提交成功：<a href=\"https://www.facebook.com/permalink.php?story_fbid=" . $__temp[1] . "&id={$page_id}\" target=\"_blank\">貼文</a>已成功發佈。為了日後方便尋<br />找您的貼文，請記住您的貼文標籤：<a href=\"https://www.facebook.com/hashtag/{$page_name}{$id}?story_id=" . $__temp[1] . "\" target=\"_blank\">#{$page_name}{$id}</a>", true);
+        render("提交成功：<a href=\"https://www.facebook.com/{$page_id}/posts/" . $__temp[1] . "\" target=\"_blank\">貼文</a>已成功發佈。為了日後方便尋<br />找您的貼文，請記住您的貼文標籤：<a href=\"https://www.facebook.com/hashtag/{$page_name}{$id}?story_id=" . $__temp[1] . "\" target=\"_blank\">#{$page_name}{$id}</a>", true);
     }
 } else {
     render("提交失敗：系統錯誤（錯誤辨識碼: 2），請私訊粉絲專頁。", false);
