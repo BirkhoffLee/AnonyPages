@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Posting an anonymous article to {{ pageName }} - AnonyPages</title>
+
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="../assets/normalize.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../assets/main.css">
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <base target="_blank" />
+</head>
+
+<body>
+    <form method="post">
+
+        <h1>{{ pageName }}</h1>
+
+        <label style="text-align: center">
+            Fill in the fields and submit to post an anonymous<br />article to <a href="{{ pageUrl }}">{{ pageName }}</a>.<br />
+            {{ Status }}
+        </label>
+
+        <br />
+
+        <fieldset>
+            <legend>
+                <span class="number">1</span>
+                &nbsp;{{ postLabel }}
+            </legend>
+
+            <textarea id="post" name="post" placeholder="{{ postPlaceholder }}" rows="9" style="resize: vertical"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend><span class="number">2</span>&nbsp;Terms of Service</legend>
+            <label>
+                <b>You are agreeing that the terms below will apply if you choose to use the service</b>:
+                <br />{{ Terms }}<br />
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend><span class="number">3</span>&nbsp;Human Verfication</legend>
+            <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
+        </fieldset>
+
+        <input type="hidden" id="action" name="action" value="post" />
+        <button type="submit" id="submit">Submit The Post</button>
+
+        <div style="text-align: center">
+            <br />
+            <small>
+                <a href="https://github.com/BirkhoffLee/FB_KaoBeiPageSystem">
+                    Powered by AnonyPages
+                </a>
+            </small>
+        </div>
+        <br />
+    </form>
+</body>
+
+</html>
