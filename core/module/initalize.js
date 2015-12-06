@@ -40,8 +40,8 @@ module.exports = function (path) {
     /*
         Load the routes and middlewares of express
      */
-    require('require-directory')(module, core.paths.route);
     require('require-directory')(module, core.paths.middleware);
+    require('require-directory')(module, core.paths.route);
 
     require(core.paths.core + "/404_handler.js");
 };

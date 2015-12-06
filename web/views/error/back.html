@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>404 Page not found - AnonyPages</title>
+        <title>Error - AnonyPages</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
@@ -67,6 +67,10 @@
             font-size: 2.1em;
         }
 
+        .text-size-14 {
+            font-size: 14px;
+        }
+
         .text-size-23 {
             font-size: 23px;
         }
@@ -93,8 +97,11 @@
     <body>
         <section class="wrap">
             <section class="inner">
-                <div class="center-head">404 - Page Not Found</div>
-                <div class="center-content text-size-23">Sorry, we could not find the page you are looking for.</div>
+                <!-- ERROR -->
+                <div class="center-head">錯誤</div>
+                <div class="center-content text-size-23">{{ message }}</div>
+                <!-- Go Back -->
+                <div class="center-content text-size-14"><a class="click-able" href="#" onclick="window.history.back()">返回上一頁</a></div>
             </section>
         </section>
 

@@ -1,68 +1,102 @@
 <!DOCTYPE HTML>
 <html>
+    <head>
+        <title>{{ siteName }} - AnonyPages</title>
+        <meta charset="utf-8" />
+        <base target="_blank" href="../"/>
+        <link href="favicon.ico" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <script src='https://www.google.com/recaptcha/api.js' async></script>
+    </head>
+    <body>
+        <form method="post" action="/page/{{ pageID }}/send" target="_self">
+            <!-- Header -->
+                <section id="header">
+                    <header class="major">
+                        <h1>{{ siteName }}</h1>
+                        <!-- Post an article to {{ pageName }} anonymously! -->
+                        <p>匿名發佈貼文到 <a href="pageUrl">{{ pageName }}</a>！</p>
+                    </header>
+                    <div class="container">
+                        <ul class="actions">
+                            <!-- Continue -->
+                            <li><a href="#one" class="button special scrolly">繼續</a></li>
+                        </ul>
+                    </div>
+                </section>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Posting an anonymous article to {{ pageName }} - AnonyPages</title>
+            <!-- One -->
+                <section id="one" class="main special">
+                    <div class="container">
+                        <div class="content">
+                            <header class="major">
+                                <!-- Terms of Service -->
+                                <h2>服務條款</h2>
+                            </header>
+                            <p>{{ Terms }}</p>
+                        </div>
+                        <!-- I have read the terms carefully -->
+                        <a href="#two" class="goto-next scrolly">我已詳閱條款</a>
+                    </div>
+                </section>
 
-    <link href="favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="../assets/normalize.css">
+            <!-- Two -->
+                <section id="two" class="main special">
+                    <div class="container">
+                        <div class="content">
+                            <header class="major">
+                                <!-- Human Verification -->
+                                <h2>人類驗證</h2>
+                            </header>
+                            <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
+                        </div>
+                        <!-- Continue -->
+                        <a href="#footer" class="goto-next scrolly">繼續</a>
+                    </div>
+                </section>
 
-    <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../assets/main.css">
+            <!-- Footer -->
+                <section id="footer">
+                    <div class="container">
+                        <header class="major">
+                            <h2>{{ postLabel }}</h2>
+                        </header>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+                            <div class="row uniform">
+                                <div class="12u$"><textarea name="message" id="message" placeholder="{{ postPlaceholder }}" rows="8"></textarea></div>
+                                <div class="12u$">
+                                    <ul class="actions">
+                                        <!-- Post! -->
+                                        <li><input type="submit" value="靠北！" class="special" /></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-    <base target="_blank" />
-</head>
 
-<body>
-    <form method="post">
+                        </form>
+                    </div>
+                    <footer>
+                        <ul class="copyright">
+                            <li>&copy; AnonyPages</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>Github: <a href="https://github.com/BirkhoffLee/AnonyPages">BirkhoffLee/AnonyPages</a></li>
+                        </ul>
+                    </footer>
+                </section>
 
-        <h1>{{ pageName }}</h1>
+            <input type="hidden" id="action" name="action" value="post" />
+        </form>
 
-        <label style="text-align: center">
-            Fill in the fields and submit to post an anonymous<br />article to <a href="{{ pageUrl }}">{{ pageName }}</a>.<br />
-            {{ Status }}
-        </label>
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="assets/js/main.js"></script>
 
-        <br />
-
-        <fieldset>
-            <legend>
-                <span class="number">1</span>
-                &nbsp;{{ postLabel }}
-            </legend>
-
-            <textarea id="post" name="post" placeholder="{{ postPlaceholder }}" rows="9" style="resize: vertical"></textarea>
-        </fieldset>
-
-        <fieldset>
-            <legend><span class="number">2</span>&nbsp;Terms of Service</legend>
-            <label>
-                <b>You are agreeing that the terms below will apply if you choose to use the service</b>:
-                <br />{{ Terms }}<br />
-            </label>
-        </fieldset>
-
-        <fieldset>
-            <legend><span class="number">3</span>&nbsp;Human Verfication</legend>
-            <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
-        </fieldset>
-
-        <input type="hidden" id="action" name="action" value="post" />
-        <button type="submit" id="submit">Submit The Post</button>
-
-        <div style="text-align: center">
-            <br />
-            <small>
-                <a href="https://github.com/BirkhoffLee/FB_KaoBeiPageSystem">
-                    Powered by AnonyPages
-                </a>
-            </small>
-        </div>
-        <br />
-    </form>
-</body>
-
+    </body>
 </html>
