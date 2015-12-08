@@ -18,26 +18,27 @@ app.set('view cache', true);
 /*
     Start server
  */
-var webServer = app.listen(config.server.port);
+var port      = config.server.port;
+var webServer = app.listen(port);
 
 /*
     Web server event hooks
  */
 function webServOnErr (err) {
     if (err.errno === 'EADDRINUSE') {
-        console.error('Could not start the web server (EADDRINUSE)');
-        console.error('Port ' + config.server.port + ' is already in use by another program.');
-        console.error('Is another AnonyPages instance already running?');
+        console.error(core.il8n.err_web_serv_start_failed_eaddrinuse);
+        console.error(core.il8n.err_port_already_in_use.replace("{port}", port));
+        console.error(core.il8n.err_is_this_already_running);
     } else {
-        console.error('There was an error starting web server.');
-        console.error('The errorNo is ' + err.errno);
+        console.error(core.il8n.err_web_serv_start_failed);
+        console.error(core.il8n.err_errno_is + err.errno);
     }
 
     process.exit(-1);
 }
 
 function webServOnListening () {
-    console.log('Server is listening on ' + config.server.host.toString() + ":" + config.server.port.toString());
+    console.log(core.il8n.web_serv_running_on + 'http://' + config.server.host.toString() + ":" + config.server.port.toString()) + "/ (Press Ctrl+C to quit)";
 }
 
 /*

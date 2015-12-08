@@ -3,7 +3,7 @@
     <head>
         <title>{{ siteName }} - AnonyPages</title>
         <meta charset="utf-8" />
-        <base target="_blank" href="../"/>
+        <base target="_blank" href="/"/>
         <link href="favicon.ico" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,18 +13,18 @@
         <script src='https://www.google.com/recaptcha/api.js' async></script>
     </head>
     <body>
-        <form method="post" action="/page/{{ pageID }}/send" target="_self">
+        <form method="post" action="/page/{{ pageID }}/send" id="mainForm" target="_self">
             <!-- Header -->
                 <section id="header">
                     <header class="major">
                         <h1>{{ siteName }}</h1>
-                        <!-- Post an article to {{ pageName }} anonymously! -->
-                        <p>匿名發佈貼文到 <a href="pageUrl">{{ pageName }}</a>！</p>
+                        <p id="title_message">
+                            {{ il8n.ui_render_post_article_anonymously_to }}<a href="pageUrl">{{ pageName }}</a>！
+                        </p>
                     </header>
                     <div class="container">
                         <ul class="actions">
-                            <!-- Continue -->
-                            <li><a href="#one" class="button special scrolly">繼續</a></li>
+                            <li><a href="#one" class="button special scrolly" id="firstBtnTitle">{{ il8n.ui_render_next_step|title }}</a></li>
                         </ul>
                     </div>
                 </section>
@@ -34,13 +34,11 @@
                     <div class="container">
                         <div class="content">
                             <header class="major">
-                                <!-- Terms of Service -->
-                                <h2>服務條款</h2>
+                                <h2>{{ il8n.ui_render_terms_of_service|title }}</h2>
                             </header>
-                            <p>{{ Terms }}</p>
+                            <p>{{ Terms|safe }}</p>
                         </div>
-                        <!-- I have read the terms carefully -->
-                        <a href="#two" class="goto-next scrolly">我已詳閱條款</a>
+                        <a href="#two" class="goto-next scrolly">{{ il8n.ui_render_i_read_tos_carefully|title }}</a>
                     </div>
                 </section>
 
@@ -49,13 +47,11 @@
                     <div class="container">
                         <div class="content">
                             <header class="major">
-                                <!-- Human Verification -->
-                                <h2>人類驗證</h2>
+                                <h2>{{ il8n.ui_render_human_verification|title }}</h2>
                             </header>
                             <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
                         </div>
-                        <!-- Continue -->
-                        <a href="#footer" class="goto-next scrolly">繼續</a>
+                        <a href="#footer" class="goto-next scrolly">{{ il8n.ui_render_next_step|title }}</a>
                     </div>
                 </section>
 
@@ -71,7 +67,7 @@
                                 <div class="12u$">
                                     <ul class="actions">
                                         <!-- Post! -->
-                                        <li><input type="submit" value="靠北！" class="special" /></li>
+                                        <li><input type="submit" id="submitBtn" value="{{ il8n.ui_render_post }}" class="special" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -90,6 +86,15 @@
         </form>
 
         <!-- Scripts -->
+            <script>
+                AnonyPages = {};
+                AnonyPages.il8n = {};
+                AnonyPages.il8n.ui_render_go_to_your_post = "{{ il8n.ui_render_go_to_your_post|addslashes }}";
+                AnonyPages.il8n.ui_render_its_hashtag_is = "{{ il8n.ui_render_its_hashtag_is|addslashes }}";
+                AnonyPages.il8n.ui_render_posting = "{{ il8n.ui_render_posting|addslashes }}";
+                AnonyPages.il8n.ui_render_post_again = "{{ il8n.ui_render_post_again|addslashes|title }}";
+            </script>
+
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/jquery.scrollex.min.js"></script>
             <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -97,6 +102,6 @@
             <script src="assets/js/util.js"></script>
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="assets/js/main.js"></script>
-
+            <script src="scripts/ajax.js"></script>
     </body>
 </html>

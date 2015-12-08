@@ -7,6 +7,7 @@ module.exports = function (path) {
         root:        path,
         core:        path + "/core",
         web:         path + "/web",
+        lang:        path + "/lang",
         route:       path + "/web/route",
         server:      path + "/core/server",
         module:      path + "/core/module",
@@ -17,6 +18,11 @@ module.exports = function (path) {
         Load configuration
      */
     config = require(core.paths.root + "/config.js");
+
+    /*
+        il8n
+     */
+    core.il8n = require(core.paths.module + "/il8n.js").register();
 
     /*
         Start Web Server
@@ -30,7 +36,7 @@ module.exports = function (path) {
         Request logger
      */
     core.weblogger = require('morgan');
-    core.server.use(core.weblogger('":method :url HTTP/:http-version" :status - :remote-addr - :response-time ms - ":user-agent"'));
+    core.server.use(core.weblogger(':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms'));
 
     /*
         Load modules

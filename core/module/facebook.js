@@ -1,11 +1,14 @@
 var request = require("request");
 
-function FacebookPage (pageID, accessToken) {
-    this.pageID = pageID;
-    this.pageID = accessToken;
+// I use this because I'm behind GFW, you don't need this
+// var agent = new require('pac-proxy-agent')('pac+http://127.0.0.1:16823/proxy_on.pac');
 
-    this.getFeedURL     = "https://graph.facebook.com/{pageID}/posts?access_token={accessToken}";
-    this.postArticleURL = "https://graph.facebook.com/v2.5/{pageID}/feed";
+function FacebookPage (pageID, accessToken) {
+    this.pageID      = pageID;
+    this.accessToken = accessToken;
+
+    this.getFeedURL     = config.facebook.getFeedURL;
+    this.postArticleURL = config.facebook.postArticleURL;
 }
 
 FacebookPage.prototype.getFeed = function (callback) {
@@ -18,10 +21,11 @@ FacebookPage.prototype.getFeed = function (callback) {
         url      : url,
         encoding : null,
         gzip     : true,
+        // agent    : agent,
         followRedirect: true
-    }, function(error, response, body) {
+    }, function (error, response, body) {
         if (error) {
-            console.error("Could not get the feed of page " + self.pageID.toString() + ":");
+            console.error(core.il8n.err_get_feed_failed + self.pageID.toString());
             console.error(error);
             callback(false);
         }
@@ -39,6 +43,7 @@ FacebookPage.prototype.postArticle = function (message, callback) {
         url      : url,
         encoding : null,
         gzip     : true,
+        // agent    : agent,
         form     : {
             access_token: self.accessToken,
             message: message
@@ -46,7 +51,7 @@ FacebookPage.prototype.postArticle = function (message, callback) {
         followRedirect: true
     }, function(error, response, body) {
         if (error) {
-            console.error("Could not post the article to page " + self.pageID.toString() + ":");
+            console.error(core.il8n.err_post_article_failed + self.pageID.toString());
             console.error(error);
             callback(false);
         }
