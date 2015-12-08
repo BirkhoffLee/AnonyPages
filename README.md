@@ -6,16 +6,13 @@ AnonyPages -- Posting articles anonymously to Facebook pages.
 [靠北餐廳](https://www.facebook.com/%E9%9D%A0%E5%8C%97%E9%A4%90%E5%BB%B3-338773669580269)
 
 # Installation
-Open config.sample.php and follow the comments to setup.
-After setting up, please rename it to config.php.
-Now, open http(s)://your_domain/renewtoken.php, and you're done.
-The posting url is http(s)://your_domain/page_id.
-
-# Auto renew Page Access Tokens
-To renew Page Access Tokens, open http(s)://your_domain/renewtoken.php
+Open config.sample.js and follow the comments to setup.
+After setting up, please rename it to config.js.
+Now, run forever start index.js and it'll be running.
+The posting url is http(s)://your_domain/page/page_id.
 
 # Troubleshooting
-If there's something wrong with renewing Page Access Tokens, please open the console in your browser. There may be some error messages you can see. Try to fix it by yourself with the message.
+If the screen stucks after pressing post button, check your browser console and server console. Try to fix it by yourself with the log.
 If you still cannot fix it, create a new issue.
 
 # Future
