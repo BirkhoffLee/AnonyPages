@@ -37,7 +37,7 @@ $(document).ready(function () {
                         msg += "</a>&nbsp;&nbsp;";
                         msg += "<a href=\"" + data.result.postURL + "\">";
                         msg += AnonyPages.il8n.ui_render_go_to_your_post;
-                        msg += "</a>" + ;
+                        msg += "</a>";
                 }
 
                 $("#title_message").html("<span style=\"" + style + "\">" + msg + "</span>");

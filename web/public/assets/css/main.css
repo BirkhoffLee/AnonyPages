@@ -3036,3 +3036,7 @@
 				}
 
 	}
+
+.noresize {
+    resize: none;
+}

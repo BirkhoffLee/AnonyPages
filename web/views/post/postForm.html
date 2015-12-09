@@ -36,7 +36,9 @@
                             <header class="major">
                                 <h2>{{ il8n.ui_render_terms_of_service|title }}</h2>
                             </header>
-                            <p>{{ Terms|safe }}</p>
+                            <p>
+                                <textarea class="noresize{% if options.autoResizeTerms %} expanding{% endif %}"{% if !options.autoResizeTerms %} rows="{{ options.TermsDefaultRows }}"{% endif %} readonly>{{ Terms|safe }}</textarea>
+                            </p>
                         </div>
                         <a href="#two" class="goto-next scrolly">{{ il8n.ui_render_i_read_tos_carefully|title }}</a>
                     </div>
@@ -96,6 +98,9 @@
             </script>
 
             <script src="assets/js/jquery.min.js"></script>
+            {% if options.autoResizeTerms %}
+                <script src="scripts/expanding.js"></script>
+            {% endif %}
             <script src="assets/js/jquery.scrollex.min.js"></script>
             <script src="assets/js/jquery.scrolly.min.js"></script>
             <script src="assets/js/skel.min.js"></script>

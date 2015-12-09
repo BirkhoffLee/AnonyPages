@@ -42,7 +42,8 @@ AnonyPages.formParams = function (req, res) {
         Terms: configs.terms,
         pageID: pageID,
         gRsitekey: config.googleRecaptcha.gRsitekey,
-        il8n: core.il8n
+        il8n: core.il8n,
+        options: configs.option
     };
 
     res.render("post/postForm", array);

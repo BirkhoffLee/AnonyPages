@@ -4,38 +4,105 @@ var path = require('path'),
     config;
 
 config = {
+    /**
+     * Version
+     * @type {String}
+     */
     version: "v0.0.1",
 
+    /**
+     * Facebook pages configuration
+     * Support multiple pages
+     *
+     * @type {Object}
+     */
     pages: {
 
         /*
             The page ID of the page.
          */
         {PAGE_ID_HERE}: {
+            /**
+             * The name of this page site
+             * @type {String}
+             */
             siteName: "靠北 XXX",
-            pageName: "靠北XXX",
-            hashtag: "#靠北XXX",
-            pageUrl: "https://www.facebook.com/XXXXX",
 
             /**
-             * afterPost is deprecated.
-             * Edit this on the Admin page.
+             * The name of the page
+             * Must be the real page name
+             * WILL BE DEPRECATED
+             *
+             * @type {String}
+             */
+            pageName: "靠北XXX",
+
+            /**
+             * The hashtag of each posts
+             * If you change this, the hashtag
+             * count will reset to 1
+             *
+             * @type {String}
+             */
+            hashtag: "#靠北XXX",
+
+            /**
+             * The facebook URL of the facebook page
+             * @type {String}
+             */
+            pageUrl: "",
+
+            /**
+             * The text at the end of each posts
+             * @type {String}
              */
             afterPost: "",
 
             /**
-             * PostLabel, PostPlaceholder and terms are deprecated.
-             * Edit them in its own view page.
+             * The label text above the post field
+             * @type {String}
              */
             postLabel: "",
+
+            /**
+             * The placeholder of the post field
+             * @type {String}
+             */
             postPlaceholder: "",
+
+            /**
+             * Terms Of Service
+             * Use "\n" for newline
+             *
+             * @type {String}
+             */
             terms: "",
 
             /**
-             * access_token is deprecated.
-             * We will store this in the database.
+             * Page Access Token
+             * @type {String}
              */
-            access_token: ""
+            access_token: "",
+
+            /**
+             * Rendering options
+             * @type {Object}
+             */
+            option: {
+                /**
+                 * Auto resize the ToS textarea?
+                 * Recommended value: false
+                 *
+                 * @type {Boolean}
+                 */
+                autoResizeTerms: false,
+
+                /**
+                 * The default "rows" value of the terms textarea
+                 * @type {Number}
+                 */
+                TermsDefaultRows: 15
+            }
         }
     },
 
@@ -118,6 +185,12 @@ config = {
         port: '1020'
     },
 
+    /**
+     * The lang we are using
+     * Check the available languages in /lang
+     *
+     * @type {String}
+     */
     lang: "en-US"
 };
 

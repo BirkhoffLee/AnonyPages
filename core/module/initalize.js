@@ -14,40 +14,69 @@ module.exports = function (path) {
         middleware:  path + "/core/middleware"
     };
 
-    /*
-        Load configuration
+    /**
+     * Load the configuration
+     * @type {object}
      */
     config = require(core.paths.root + "/config.js");
 
-    /*
-        il8n
-     */
-    core.il8n = require(core.paths.module + "/il8n.js").register();
+    // /**
+    //  * Load the database
+    //  * @type {nedb}
+    //  */
+    // var nedb        = require("nedb");
+    // core.Datastore  = require("nedb");
+    // core.db         = {};
+    // core.db.main    = new core.Datastore({ filename: 'anonypages.db' });
+    // core.db.main.loadDatabase(function (err) {
+    //     /**
+    //      * Check error status
+    //      * @param  {[type]} err Error Information
+    //      * @return {void}
+    //      */
+    //     if (err) {
+    //         console.error("Failed loading the database!");
+    //         console.error(err);
+    //         process.exit(-1);
+    //     }
 
-    /*
-        Start Web Server
-     */
-    core.server    = require(core.paths.server + "/server.js");
-    core.express   = core.server.express;
-    core.webServer = core.server.webServer;
-    core.server    = core.server.app;
+        /**
+         * Register il8n helper
+         * @type {object}
+         */
+        core.il8n = require(core.paths.module + "/il8n.js").register();
 
-    /*
-        Request logger
-     */
-    core.weblogger = require('morgan');
-    core.server.use(core.weblogger(':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms'));
+        /**
+         * Start web server
+         * @type {object}
+         */
+        core.server    = require(core.paths.server + "/server.js");
+        core.express   = core.server.express;
+        core.webServer = core.server.webServer;
+        core.server    = core.server.app;
 
-    /*
-        Load modules
-     */
-    require('require-directory')(module, core.paths.module);
+        /**
+         * Register request logger
+         * @type {object}
+         */
+        core.weblogger = require('morgan');
+        core.server.use(core.weblogger(':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms'));
 
-    /*
-        Load the routes and middlewares of express
-     */
-    require('require-directory')(module, core.paths.middleware);
-    require('require-directory')(module, core.paths.route);
+        /**
+         * Load the modules
+         */
+        require('require-directory')(module, core.paths.module);
 
-    require(core.paths.core + "/404_handler.js");
+        /**
+         * Load the routes and middlewares of express
+         */
+        require('require-directory')(module, core.paths.middleware);
+        require('require-directory')(module, core.paths.route);
+
+        /**
+         * Register 404 error handler
+         * This must be the last middleware loaded
+         */
+        require(core.paths.core + "/404_handler.js");
+    // });
 };
