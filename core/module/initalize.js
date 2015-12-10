@@ -51,6 +51,7 @@ module.exports = function (path) {
          * @type {object}
          */
         core.server    = require(core.paths.server + "/server.js");
+        core.socketio  = require(core.paths.server + "/socketio.js")();
         core.express   = core.server.express;
         core.webServer = core.server.webServer;
         core.server    = core.server.app;

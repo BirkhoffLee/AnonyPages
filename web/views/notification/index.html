@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ il8n.ui_render_Notifications|capitalize }} - AnonyPages</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<base target="_blank" href="/" />
+<link href="favicon.ico" rel="shortcut icon">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="scripts/socket.io.js"></script>
+<style type="text/css">
+    body {
+        background-color: #e9eaed;
+        font-family: "Microsoft Jhenghei UI", "Tahoma", "Segoe UI Light", sans-serif
+    }
+
+    #status {
+        width: 100%;
+        text-align: center;
+        top: 40%;
+        position: absolute;
+        font-size: 50px
+    }
+</style>
+</head>
+
+<body>
+<script>
+userName = "";
+lastPostID = "first";
+access_token = "";
+pageNames = {{ page_names|safe }};
+timeout = {{ update_timeout }};
+socket = io.connect(/([a-zA-Z0-9-.]+)/.exec(window.location.host)[0] + "{{ socketIOport }}");
+
+function getLatestPostIDs () {
+    return socket.emit('getLatestPostIDs');
+}
+
+function gotIDs (data) {
+    if (data.err) { setTimeout(getLatestPostIDs, timeout); return; }
+
+    if (lastPostID == "first") { lastPostID = data.list; } else {
+        var nowIDs = data.list;
+
+        for (var key in nowIDs) {
+            if (nowIDs[key] != lastPostID[key]) {
+                var icon = "https://graph.facebook.com/v2.5/" + key + "/picture?type=normal";
+                var postid = nowIDs[key].split("_")[1];
+
+                pushNotification(icon, "{{ il8n.ui_render_new_article_posted|escape }}", pageNames[key], function () {
+                    window.open("https://www.facebook.com/" + key);
+                });
+            }
+        }
+    }
+
+    setTimeout(getLatestPostIDs, timeout);
+}
+
+window.fbAsyncInit = function () {
+    FB.init({
+        appId      : '{{ fb_app_id }}',
+        cookie     : true,
+        version    : 'v2.2',
+        xfbml      : true,
+        oauth      : true
+    });
+
+    startMonitor();
+};
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function startMonitor () {
+    if (!Notification) {
+        return false;
+    }
+
+    FB.getLoginStatus(function (response) {
+        if (response.authResponse) {
+            access_token = response.authResponse.accessToken;
+
+            FB.api('/me', function (r) {
+                userName = r.name;
+
+                $(document).ready(function () {
+                    $('#status').fadeOut("slow", function () {
+                        $('#status').html("{{ il8n.ui_render_welcome_username|escape }}".replace("{username}", userName));
+                        $('#status').fadeIn("slow");
+                    });
+
+                    monitorPosts();
+                });
+            });
+        } else {
+            FB.login(function (response) {
+                getLatestPostIDs();
+                socket.on('getLatestPostIDsResult', gotIDs);
+            });
+        }
+    });
+}
+
+function pushNotification (icon, message, title, onclick) {
+    if (!Notification) {
+        return false;
+    }
+
+    var options = {
+        dir: "ltr",
+        lang: "utf-8",
+        icon: icon,
+        body: message
+    };
+    if (Notification.permission === "granted") {
+        var n = new Notification(title, options);
+        n.onclick = onclick;
+        n.onerror = function() {
+            console.log("There was an error with the notification!");
+        }
+    } else if (Notification.permission !== "denied") {
+        Notification.requestPermission(function (status) {
+            if (Notification.permission !== status) {
+                Notification.permission = status;
+            }
+
+            if (status === "granted") {
+                var n = new Notification(title, options);
+                n.onclick = onclick;
+                n.onerror = function() {
+                    console.log("There was an error with the notification!");
+                }
+            }
+        });
+    }
+}
+
+$(document).ready(function () {
+    if (!Notification) {
+        $('#status').fadeOut("slow", function () {
+            $('#status').html("{{ il8n.ui_render_update_your_browser }}");
+            $('#status').fadeIn("slow");
+        });
+        return false;
+    }
+
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission(function (status) {
+            if (Notification.permission !== status) {
+                Notification.permission = status;
+            }
+        });
+    }
+});
+</script>
+
+<div id="status">{{ il8n.ui_render_connecting_to_facebook }}</div>
+
+</body>
+</html>

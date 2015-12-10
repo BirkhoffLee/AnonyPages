@@ -21,7 +21,7 @@ config = {
         /*
             The page ID of the page.
          */
-        {PAGE_ID_HERE}: {
+        {PAGE_ID_HERE!}: {
             /**
              * The name of this page site
              * @type {String}
@@ -115,51 +115,56 @@ config = {
             to make the app general public.
          */
 
-        /*
-            Facebook App ID.
+        /**
+         * Facebook App ID
+         * @type {String}
          */
         app_id: "",
 
-        /*
-            Facebook App Secret.
-            Do not make this known by untrusted people.
+        /**
+         * Facebook App Secret.
+         * DO NOT make this known by anyone else.
+         *
+         * @type {String}
          */
         app_secret: "",
 
-        /*
-            The Graph API URL to get feed
+        /**
+         * The Graph API URL to get feed
+         * @type {String}
          */
         getFeedURL: "https://graph.facebook.com/{pageID}/posts?access_token={accessToken}",
 
-        /*
-            The Graph API URL to get feed
+        /**
+         * The Graph API URL to post article
+         * @type {String}
          */
         postArticleURL: "https://graph.facebook.com/v2.5/{pageID}/feed",
 
-        /*
-            The Graph API Doc URL of error explanations
+        /**
+         * The Graph API Doc URL of error explanations
+         * @type {String}
          */
         graphAPIerrorRef: "https://developers.facebook.com/docs/graph-api/using-graph-api/v2.5#errors",
 
-        /*
-            The Facebook URL of the post
+        /**
+         * The Facebook URL of the post
+         * @type {String}
          */
         postURL: "https://www.facebook.com/{page_id}/posts/{postID}",
 
-        /*
-            The Facebook URL of the hashtag (including the post's id)
+        /**
+         * The Facebook URL of the hashtag (including the post's id)
+         * @type {String}
          */
         hashtagURL: "https://www.facebook.com/hashtag/{hashtag}?story_id={postID}"
     },
 
+    /**
+     * Recaptcha is required
+     * @type {Object}
+     */
     googleRecaptcha: {
-        /*
-            Enable Google Recaptcha or not.
-            It's highly recommended to enable
-            this, it's a free service!
-         */
-        enabled: true,
-
         /*
             Google Recaptcha Site Key for this site.
          */
@@ -181,8 +186,50 @@ config = {
         Web Server settings
      */
     server: {
+        /**
+         * Host
+         * @type {String}
+         */
         host: '127.0.0.1',
-        port: '1020'
+
+        /**
+         * Web Server settings
+         * @type {Object}
+         */
+        web: {
+            /**
+             * Web Server port
+             * @type {String}
+             */
+            port: '1020'
+        },
+        socketio: {
+            /**
+             * WS Server port
+             * @type {String}
+             */
+            port: 2826
+        }
+    },
+
+    /**
+     * Notify you when a new article was posted.
+     * Use this feature on /notification
+     *
+     * @type {Object}
+     */
+    notification: {
+        /**
+         * Enabled or not.
+         * @type {Boolean}
+         */
+        enabled: true,
+
+        /**
+         * The delay between the checkings in milliseconds.
+         * @type {Number}
+         */
+        update_timeout: 5000
     },
 
     /**

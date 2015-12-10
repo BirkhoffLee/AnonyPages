@@ -18,7 +18,7 @@ app.set('view cache', true);
 /*
     Start server
  */
-var port      = config.server.port;
+var port      = config.server.web.port;
 var webServer = app.listen(port);
 
 /*
@@ -38,7 +38,7 @@ function webServOnErr (err) {
 }
 
 function webServOnListening () {
-    console.log(core.il8n.web_serv_running_on + 'http://' + config.server.host.toString() + ":" + config.server.port.toString()) + "/ (Press Ctrl+C to quit)";
+    console.log(core.il8n.web_serv_running_on + 'http://' + config.server.host.toString() + ":" + config.server.web.port.toString() + "/ " + core.il8n.web_serv_close_press_ctrl_c);
 }
 
 /*

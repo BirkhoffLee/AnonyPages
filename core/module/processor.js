@@ -123,7 +123,7 @@ AnonyPages.postParams = function (req, res) {
                     errMsg += core.il8n.err_check_this + config.facebook.graphAPIerrorRef + "\n";
                     errMsg += "--";
 
-                console.log(errMsg);
+                console.error(errMsg);
 
                 sendResultJson(res, 7, true, 500, "ui_err_fb_getfeed_failed");
                 return false;

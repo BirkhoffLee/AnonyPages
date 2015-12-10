@@ -13,7 +13,7 @@ module.exports = {
     err_is_this_already_running: "Is another AnonyPages instance already running?",
     err_web_serv_start_failed: "There was an error starting web server.",
     err_errno_is: "The errorNo is ",
-    web_serv_running_on: "Running on ",
+    web_serv_running_on: "Web Server running on ",
     ui_err_get_recaptcha_verification_failed: "Couldn't get the reCAPTCHA response from Google.",
     ui_err_recaptcha_invalid: "Did you check the checkbox in Human Verification section?",
     ui_err_missing_message_field: "Article content is not given!",
@@ -31,5 +31,16 @@ module.exports = {
     ui_render_human_verification: "Human Verification",
     ui_render_post: "Post!",
     ui_render_posting: "Posting...",
-    ui_render_post_again: "Post again"
+    ui_render_post_again: "Post again",
+    ui_render_Notifications: "Notifications",
+    web_serv_close_press_ctrl_c: "(Press Ctrl+C to quit)",
+    err_FacebookPage_pageID_not_given: "FacebookPage module: Page ID not given",
+    err_FacebookPage_accessToken_not_given: "FacebookPage module: Page Access Token not given",
+    notification_fb_getfeed_failed: "Could not get the latest feed of the page {pageID}.",
+    recvd_getLatestPostIDs: "Recieved a request to get the latest post ids of all the facebook pages",
+    socketio_serv_running_on: "WebSocket Server running on ",
+    ui_render_connecting_to_facebook: "Connecting to Facebook..",
+    ui_render_update_your_browser: "Please update your web browser.",
+    ui_render_welcome_username: "Welcome, {username}!",
+    ui_render_new_article_posted: "There was a new article posted to the page!"
 };
