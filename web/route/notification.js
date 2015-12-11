@@ -8,7 +8,6 @@ core.server.get('/notification', function (req, res) {
 
     var array = {
         il8n: core.il8n,
-        socketIOport: ":" + config.server.socketio.port.toString(),
         update_timeout: config.notification.update_timeout.toString(),
         fb_app_id: config.facebook.app_id,
         page_names: "{" + pageNames.slice(0, pageNames.length - 2) + "}"

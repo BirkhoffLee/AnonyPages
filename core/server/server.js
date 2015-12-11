@@ -1,13 +1,16 @@
-/*
-    Web Server
+/**
+ * Web & Socket.io Server
  */
 
 var express = require('express'),
     app     = express(),
-    swig    = require('swig');
+    swig    = require('swig'),
+    server  = require('http').Server(app);
 
-/*
-    Swig settings
+core.socketio = require('socket.io')(server);
+
+/**
+ * Swig settings
  */
 app.engine('html', swig.renderFile);
 
@@ -15,14 +18,16 @@ app.set('view engine', 'html');
 app.set('views', core.paths.web + '/views');
 app.set('view cache', true);
 
-/*
-    Start server
+/**
+ * Start server
  */
-var port      = config.server.web.port;
-var webServer = app.listen(port);
+var port      = config.server.port;
+var webServer = server.listen(port);
 
-/*
-    Web server event hooks
+console.log(core.il8n.socketio_serv_running_on + 'ws://' + config.server.host.toString() + ":" + config.server.port.toString());
+
+/**
+ * Web server event hooks
  */
 function webServOnErr (err) {
     if (err.errno === 'EADDRINUSE') {
@@ -38,17 +43,18 @@ function webServOnErr (err) {
 }
 
 function webServOnListening () {
-    console.log(core.il8n.web_serv_running_on + 'http://' + config.server.host.toString() + ":" + config.server.web.port.toString() + "/ " + core.il8n.web_serv_close_press_ctrl_c);
+    console.log(core.il8n.web_serv_running_on + 'http://' + config.server.host.toString() + ":" + config.server.port.toString() + "/ " + core.il8n.web_serv_close_press_ctrl_c);
 }
 
-/*
-    Bind hooks
+/**
+ * Bind hooks
  */
 webServer.on('error'    , webServOnErr);
 webServer.on('listening', webServOnListening);
 
 
-/*
-    Return objects
+/**
+ * Return server objects
+ * @type {Object}
  */
 module.exports = {app: app, express: express, webServer: webServer};

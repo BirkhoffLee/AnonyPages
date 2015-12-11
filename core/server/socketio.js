@@ -1,15 +1,10 @@
 module.exports = function () {
     var FacebookPage        = require(core.paths.module + "/facebook.js");
     var FacebookPageObjects = {};
-    var wsPort              = config.server.socketio.port;
 
     for (var pageID in config.pages) {
         FacebookPageObjects[pageID] = new FacebookPage(pageID, config.pages[pageID].access_token);
     }
-
-
-    core.socketio = require('socket.io')(wsPort);
-    console.log(core.il8n.socketio_serv_running_on + 'ws://' + config.server.host.toString() + ":" + wsPort.toString());
 
     core.socketio.on('connection', function (socket) {
         socket.emit('connected');

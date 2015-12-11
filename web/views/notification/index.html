@@ -4,12 +4,10 @@
 <title>{{ il8n.ui_render_Notifications|capitalize }} - AnonyPages</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-
 <base target="_blank" href="/" />
 <link href="favicon.ico" rel="shortcut icon">
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="scripts/socket.io.js"></script>
+<script src="scripts/jquery.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
 <style type="text/css">
     body {
         background-color: #e9eaed;
@@ -33,10 +31,10 @@ lastPostID = "first";
 access_token = "";
 pageNames = {{ page_names|safe }};
 timeout = {{ update_timeout }};
-socket = io.connect(/([a-zA-Z0-9-.]+)/.exec(window.location.host)[0] + "{{ socketIOport }}");
+socket = io.connect(window.location.host);
 
 function getLatestPostIDs () {
-    return socket.emit('getLatestPostIDs');
+    socket.emit('getLatestPostIDs');
 }
 
 function gotIDs (data) {
@@ -98,13 +96,13 @@ function startMonitor () {
                         $('#status').fadeIn("slow");
                     });
 
-                    monitorPosts();
+                    getLatestPostIDs();
+                    socket.on('getLatestPostIDsResult', gotIDs);
                 });
             });
         } else {
             FB.login(function (response) {
-                getLatestPostIDs();
-                socket.on('getLatestPostIDsResult', gotIDs);
+                startMonitor();
             });
         }
     });

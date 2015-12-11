@@ -193,23 +193,10 @@ config = {
         host: '127.0.0.1',
 
         /**
-         * Web Server settings
-         * @type {Object}
+         * Web Server port
+         * @type {String}
          */
-        web: {
-            /**
-             * Web Server port
-             * @type {String}
-             */
-            port: '1020'
-        },
-        socketio: {
-            /**
-             * WS Server port
-             * @type {String}
-             */
-            port: 2826
-        }
+        port: 1020
     },
 
     /**
