@@ -40,21 +40,23 @@ function getLatestPostIDs () {
 function gotIDs (data) {
     if (data.err) { setTimeout(getLatestPostIDs, timeout); return; }
 
-    if (lastPostID == "first") { lastPostID = data.list; } else {
+    if (lastPostID != "first") {
         var nowIDs = data.list;
 
         for (var key in nowIDs) {
             if (nowIDs[key] != lastPostID[key]) {
                 var icon = "https://graph.facebook.com/v2.5/" + key + "/picture?type=normal";
-                var postid = nowIDs[key].split("_")[1];
 
                 pushNotification(icon, "{{ il8n.ui_render_new_article_posted|escape }}", pageNames[key], function () {
                     window.open("https://www.facebook.com/" + key);
                 });
+
+                lastPostID = data.list;
             }
         }
     }
 
+    lastPostID = data.list;
     setTimeout(getLatestPostIDs, timeout);
 }
 
