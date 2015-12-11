@@ -35,7 +35,7 @@ cat PATH_TO_LOGFILE
 `  
 Try to fix the problem by yourself with the log. If you still cannot fix it, create a new issue with the logs.  
 
-### Chinese Readme  
+### --Chinese Readme below--  
 # AnonyPages -- 臉書的匿名靠北粉絲專頁管理系統  
 
 > 注意：這個 branch 還處於開發狀態。  
