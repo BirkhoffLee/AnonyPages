@@ -107,7 +107,7 @@ AnonyPages.postParams = function (req, res) {
         var accessToken = configs.access_token;
 
         var facebookObj = new FacebookPage(pageID, accessToken);
-        var newHashtag;
+        var newHashtag = "";
 
         facebookObj.getFeed(function (result) {
             if (result === false) {
@@ -135,16 +135,23 @@ AnonyPages.postParams = function (req, res) {
             }
 
             var BreakException = {};
+
             try {
+                var ok = false;
+
                 result.data.forEach(function (post) {
                     if (post.message.startsWith(configs.hashtag)) {
                         var nowNumber = parseInt(post.message.split("\n")[0].trim().slice(configs.hashtag.length));
                         var newID = nowNumber + 1;
                         newHashtag = configs.hashtag + newID.toString();
-
+                        ok = true;
                         throw BreakException;
                     }
                 });
+
+                if (!ok) {
+                    newHashtag = configs.hashtag + "1";
+                }
             } catch (e) {
                 if (e !== BreakException) {
                     console.error(e);
