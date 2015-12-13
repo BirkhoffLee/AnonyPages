@@ -19,6 +19,12 @@ app.set('views', core.paths.web + '/views');
 app.set('view cache', true);
 
 /**
+ * Trust Proxy setting
+ * http://expressjs.com/en/api.html#app.set
+ */
+app.set('trust proxy', true);
+
+/**
  * Start server
  */
 var port      = config.server.port;
