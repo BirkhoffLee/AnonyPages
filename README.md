@@ -1,7 +1,5 @@
 # AnonyPages -- Posting articles anonymously to Facebook pages.  
 
-> ATTENTION: This branch is still in development.  
-
 ## These pages are using AnonyPages  
 [靠北AVA](https://www.facebook.com/KaoBeiAVA/)  
 [靠北LOL](https://www.facebook.com/KaoBeiLOL/)  
@@ -37,8 +35,6 @@ Try to fix the problem by yourself with the log. If you still cannot fix it, cre
 
 ### --Chinese Readme below--  
 # AnonyPages -- 臉書的匿名靠北粉絲專頁管理系統  
-
-> 注意：這個 branch 還處於開發狀態。  
 
 ## 這些粉絲專頁使用 AnonyPages  
 [靠北AVA](https://www.facebook.com/KaoBeiAVA/)  
