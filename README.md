@@ -1,10 +1,5 @@
 # AnonyPages -- Posting articles anonymously to Facebook pages.  
 
-## These pages are using AnonyPages  
-[靠北AVA](https://www.facebook.com/KaoBeiAVA/)  
-[靠北LOL](https://www.facebook.com/KaoBeiLOL/)  
-[靠北餐廳](https://www.facebook.com/%E9%9D%A0%E5%8C%97%E9%A4%90%E5%BB%B3-338773669580269)  
-
 ## Installation  
 Open config.sample.js and follow the comments to setup.  
 After setting up, please rename it to config.js.  
@@ -36,11 +31,6 @@ Try to fix the problem by yourself with the log. If you still cannot fix it, cre
 ### --Chinese Readme below--  
 # AnonyPages -- 臉書的匿名靠北粉絲專頁管理系統  
 
-## 這些粉絲專頁使用 AnonyPages  
-[靠北AVA](https://www.facebook.com/KaoBeiAVA/)  
-[靠北LOL](https://www.facebook.com/KaoBeiLOL/)  
-[靠北餐廳](https://www.facebook.com/%E9%9D%A0%E5%8C%97%E9%A4%90%E5%BB%B3-338773669580269)  
-
 ## 設定  
 打開 config.sample.js，依照檔案內的註解進行設定。  
 待設定完畢後，請將其重新命名為 config.js。  
@@ -68,4 +58,4 @@ forever logs
 `
 cat 複製的值
 `  
-請嘗試依據上述錯誤訊息解決問題。如果您無法解決該問題，可以建立一個 Issue，記得附上日誌。  
+請嘗試依據上述錯誤訊息解決問題。如果您無法解決該問題，可以建立一個 Issue，記得附上 log。  
