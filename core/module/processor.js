@@ -1,9 +1,6 @@
 var request      = require("request"),
     FacebookPage = require(core.paths.module + "/facebook.js");
 
-// I use this because I'm behind GFW, you don't need this
-// var agent = new require('pac-proxy-agent')('pac+http://127.0.0.1:16823/proxy_on.pac');
-
 function sendResultJson (res, code, err, http_status_code, message_il8n_id, concatArr) {
     if (typeof concatArr != "object") {
         var result = {
@@ -80,7 +77,6 @@ AnonyPages.postParams = function (req, res) {
         url      : config.googleRecaptcha.verifyURL,
         encoding : null,
         gzip     : true,
-        // agent    : agent,
         form     : {
             secret: config.googleRecaptcha.gRsecret,
             response: req.body["g-recaptcha-response"]
@@ -140,6 +136,8 @@ AnonyPages.postParams = function (req, res) {
                 var ok = false;
 
                 result.data.forEach(function (post) {
+                    if (!post.message) {return;}
+                    
                     if (post.message.startsWith(configs.hashtag)) {
                         var nowNumber = parseInt(post.message.split("\n")[0].trim().slice(configs.hashtag.length));
                         var newID = nowNumber + 1;
