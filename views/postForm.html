@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>{{ siteName }} - AnonyPages</title>
+        <title>{{ pageName }} - AnonyPages</title>
         <meta charset="utf-8" />
         <base target="_blank" href="/"/>
         <link href="favicon.ico" rel="shortcut icon">
@@ -13,18 +13,18 @@
         <script src='https://www.google.com/recaptcha/api.js' async></script>
     </head>
     <body>
-        <form method="post" action="/page/{{ pageID }}/send" id="mainForm" target="_self">
+        <form method="post" action="/page/{{ pageID }}/post" id="mainForm" target="_self">
             <!-- Header -->
                 <section id="header">
                     <header class="major">
-                        <h1>{{ siteName }}</h1>
+                        <h1>{{ pageName }}</h1>
                         <p id="title_message">
-                            {{ il8n.ui_render_post_article_anonymously_to }}<a href="https://fb.com/{{ pageID }}">{{ pageName }}</a>！
+                            {{ i18n.post_anonymously_to }}<a href="https://fb.com/{{ pageID }}">{{ pageName }}</a>{{ i18n.exclamation_mark }}
                         </p>
                     </header>
                     <div class="container">
                         <ul class="actions">
-                            <li><a href="#one" class="button special scrolly" id="firstBtnTitle">{{ il8n.ui_render_next_step|title }}</a></li>
+                            <li><a href="#one" class="button special scrolly" id="firstBtnTitle">{{ i18n.next_step|title }}</a></li>
                         </ul>
                     </div>
                 </section>
@@ -34,13 +34,13 @@
                     <div class="container">
                         <div class="content">
                             <header class="major">
-                                <h2>{{ il8n.ui_render_terms_of_service|title }}</h2>
+                                <h2>{{ i18n.terms_of_service|title }}</h2>
                             </header>
                             <p>
-                                <textarea class="noresize{% if options.autoResizeTerms %} expanding{% endif %}"{% if !options.autoResizeTerms %} rows="{{ options.TermsDefaultRows }}"{% endif %} readonly>{{ Terms|safe }}</textarea>
+                                <textarea class="noresize{" rows="15" readonly>{{ Terms|safe }}</textarea>
                             </p>
                         </div>
-                        <a href="#two" class="goto-next scrolly">{{ il8n.ui_render_i_read_tos_carefully|title }}</a>
+                        <a href="#two" class="goto-next scrolly">{{ i18n.i_have_read_tos_carefully|title }}</a>
                     </div>
                 </section>
 
@@ -49,11 +49,11 @@
                     <div class="container">
                         <div class="content">
                             <header class="major">
-                                <h2>{{ il8n.ui_render_human_verification|title }}</h2>
+                                <h2>{{ i18n.human_verification|title }}</h2>
                             </header>
                             <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
                         </div>
-                        <a href="#footer" class="goto-next scrolly">{{ il8n.ui_render_next_step|title }}</a>
+                        <a href="#footer" class="goto-next scrolly">{{ i18n.next_step|title }}</a>
                     </div>
                 </section>
 
@@ -65,11 +65,13 @@
                         </header>
 
                             <div class="row uniform">
-                                <div class="12u$"><textarea name="message" id="message" placeholder="{{ postPlaceholder }}" rows="8"></textarea></div>
+                                <div class="12u$">
+                                    <textarea name="message" id="message" placeholder="{{ postPlaceholder }}" rows="8" style="resize: vertical"></textarea>
+                                </div>
                                 <div class="12u$">
                                     <ul class="actions">
                                         <!-- Post! -->
-                                        <li><input type="submit" id="submitBtn" value="{{ il8n.ui_render_post }}" class="special" /></li>
+                                        <li><input type="submit" id="submitBtn" value="{{ i18n.post }}" class="special" /></li>
                                     </ul>
                                 </div>
                             </div>
@@ -89,18 +91,17 @@
 
         <!-- Scripts -->
             <script>
+                window.fb_app_id = {{ fb_app_id }};
                 AnonyPages = {};
-                AnonyPages.il8n = {};
-                AnonyPages.il8n.ui_render_go_to_your_post = "{{ il8n.ui_render_go_to_your_post|addslashes }}";
-                AnonyPages.il8n.ui_render_its_hashtag_is = "{{ il8n.ui_render_its_hashtag_is|addslashes }}";
-                AnonyPages.il8n.ui_render_posting = "{{ il8n.ui_render_posting|addslashes }}";
-                AnonyPages.il8n.ui_render_post_again = "{{ il8n.ui_render_post_again|addslashes|title }}";
+                AnonyPages.i18n = {};
+                AnonyPages.i18n.go_to_your_post = "{{ i18n.nagivate_to_your_post|addslashes }}";
+                AnonyPages.i18n.its_hashtag_is = "{{ i18n.its_hashtag_is|addslashes }}";
+                AnonyPages.i18n.posting = "{{ i18n.posting|addslashes }}";
+                AnonyPages.i18n.post_again = "{{ i18n.post_again|addslashes|title }}";
+                AnonyPages.i18n.scroll_to_top = "{{ i18n.scroll_to_top|addslashes|title }}";
             </script>
 
             <script src="assets/js/jquery.min.js"></script>
-            {% if options.autoResizeTerms %}
-                <script src="scripts/expanding.js"></script>
-            {% endif %}
             <script src="assets/js/jquery.scrollex.min.js"></script>
             <script src="assets/js/jquery.scrolly.min.js"></script>
             <script src="assets/js/skel.min.js"></script>
