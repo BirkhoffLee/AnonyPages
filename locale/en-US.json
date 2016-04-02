@@ -1,0 +1,21 @@
+{
+    "post_anonymously_to": "Post an article anonymously to ",
+    "next_step": "Next",
+    "terms_of_service": "Terms of Service",
+    "i_have_read_tos_carefully": "I have read the terms of service above carefully",
+    "human_verification": "Human Verification",
+    "post": "Post",
+    "nagivate_to_your_post": "Nagivate to my post!",
+    "its_hashtag_is": "Its Facebook hashtag is: ",
+    "posting": "Posting..",
+    "post_again": "Reload the page to post another post.",
+    "bad_request": "Bad request.",
+    "internal_serer_error": "Internal server error",
+    "please_complete_the_captcha_correctly": "Please complete the captcha correctly.",
+    "time_submitted": "Time submitted: ",
+    "post_identifier": "The identifier of this post: ",
+    "posting_succeed": "Posted your article successfully!",
+    "exclamation_mark": "!",
+    "scroll_to_top": "Please scroll to the top",
+    "login_to_facebook": "Please log in to Facebook. If your browser blocks pop-ups, please enable it for a while in order to log in to Facebook."
+}

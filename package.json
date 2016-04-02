@@ -1,0 +1,29 @@
+{
+  "name": "anony-pages",
+  "version": "2.0.0",
+  "description": "Users can post to Facebook pages anonymously with AnonyPages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BirkhoffLee/AnonyPages.git"
+  },
+  "author": "Birkhoff Lee <birkhoff.lee.cn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BirkhoffLee/AnonyPages/issues"
+  },
+  "homepage": "https://github.com/BirkhoffLee/AnonyPages#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "coffee-script": "^1.10.0",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "q": "^1.4.1",
+    "request": "^2.69.0",
+    "require-directory": "^2.1.1",
+    "swig": "^1.4.2"
+  }
+}

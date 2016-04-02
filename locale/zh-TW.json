@@ -1,0 +1,21 @@
+{
+    "post_anonymously_to": "匿名發佈貼文到",
+    "next_step": "下一步",
+    "terms_of_service": "服務條約",
+    "i_have_read_tos_carefully": "我已仔細閱讀以上條約",
+    "human_verification": "人類驗證",
+    "post": "發文",
+    "nagivate_to_your_post": "去看我的貼文！",
+    "its_hashtag_is": "它的標籤是：",
+    "posting": "發佈中..",
+    "post_again": "重新載入此頁面以再次發文。",
+    "bad_request": "無效的請求",
+    "internal_serer_error": "內部伺服器錯誤",
+    "please_complete_the_captcha_correctly": "請正確完成人類驗證。",
+    "time_submitted": "提交日期：",
+    "post_identifier": "貼文辨識碼：",
+    "posting_succeed": "您的貼文已發佈完成！",
+    "exclamation_mark": "！",
+    "scroll_to_top": "請至頁面頂端",
+    "login_to_facebook": "請授權登入至臉書。若您的瀏覽器會阻擋彈出式視窗，請暫時開啟之，以進行授權事宜。"
+}
