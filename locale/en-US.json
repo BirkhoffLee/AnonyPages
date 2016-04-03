@@ -12,7 +12,7 @@
     "bad_request": "Bad request.",
     "internal_serer_error": "Internal server error",
     "please_complete_the_captcha_correctly": "Please complete the captcha correctly.",
-    "time_submitted": "Time submitted: ",
+    "time_submitted": "Time Posted: ",
     "post_identifier": "The identifier of this post: ",
     "posting_succeed": "Posted your article successfully!",
     "exclamation_mark": "!",
