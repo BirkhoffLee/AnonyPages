@@ -55,7 +55,7 @@ $(document).ready(function () {
             url: $("#mainForm").attr('action'),
             type: "POST",
             data: formData,
-            dataType: "html"
+            dataType: "json"
         }).always(function (res) {
             data = res.responseJSON;
 
