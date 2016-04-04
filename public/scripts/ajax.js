@@ -61,7 +61,7 @@ $(document).ready(function () {
 
             $('html, body').animate({ scrollTop : 0 }, 1250);
 
-            var style = (data.err == 1) ? "color: #FFCCC" : "";
+            var style = (data.err == 1) ? "color: #FFEE58 !important" : "";
 
             if (typeof data.result == "undefined") {
                 var msg = data.message;
