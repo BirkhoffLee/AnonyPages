@@ -54,8 +54,7 @@ module.exports = ->
         console.log "AnonyPages web server listening on port #{port}"
 
     ###
-    # 404 Not Found
+    # Last route: 404 Not Found
     ###
     app.use (req, res, next) ->
-        res.status 404
-        res.send "404 page not found: #{req.url}"
+        global.AnonyPages.functions.notFound req, res

@@ -4,9 +4,10 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     i18n = global.AnonyPages.i18n
 
     if !req.body["g-recaptcha-response"]? or !req.body.message? or !req.body.o or typeof global.AnonyPages.config.pages[req.params.pageID] == "undefined"
+        console.log "Post result: code 1"
         res.status(400).json
             code: 1
-            err: 0
+            err: 1
             message: i18n.bad_request
         false
 
@@ -16,11 +17,11 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     accessToken  = pageConfig.access_token
     facebookObj  = new global.AnonyPages.facebook()
     userInfo     = null
-    userURL      = null
     pageFeed     = null
     nextHashtag  = ""
 
     if req.body.o == "unauthorized"
+        console.log "Post result: code 10"
         res.status(400).json
             code: 10
             err: 1
@@ -32,7 +33,6 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
         return facebookObj.verifyUserAccessToken req.body.o
     .then (information) ->
         userInfo = information
-        userURL  = "https://www.facebook.com/app_scoped_user_id/#{userInfo.id}"
         return facebookObj.getPageFeed pageID, accessToken
     .then (pageFeed) ->
         breakException = {}
@@ -55,6 +55,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 nextHashtag = pageConfig.hashtag + "1"
         catch e
             if e != breakException
+                console.log "Post result: code 2"
                 res.status(500).json
                     code: 2
                     err: 1
@@ -74,11 +75,11 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
         afterPost = pageConfig.afterPost
 
         cipher    = crypto.createCipher 'aes-256-cbc', config.encryptKey.toString 'binary'
-        crypted   = cipher.update userURL, 'utf8', 'hex'
+        crypted   = cipher.update userInfo.id, 'utf8', 'hex'
         crypted  += cipher.final 'hex'
 
         message   = nextHashtag + "\n"
-        message  += req.body.message + "\n\n"
+        message  += req.body.message.trim() + "\n\n"
         message  += i18n.time_submitted + time + "\n"
         message  += afterPost + "\n"
         message  += i18n.post_identifier + crypted
@@ -87,6 +88,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .then (postData) ->
         postID = postData["id"].toString().split("_")[1]
 
+        console.log "Post result: code 0 (#{nextHashtag})"
         res.status(200).json
             code: 0
             err: 0
@@ -99,40 +101,46 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .fail (err) ->
         switch err
             when "recaptcha!"
+                console.log "Post result: code 3"
                 res.status(500).json
                     code: 3
                     err: 1
                     message: i18n.internal_serer_error
                 false
             when "recaptcha"
+                console.log "Post result: code 4"
+                console.log "reCAPTCHA response: #{req.body["g-recaptcha-response"]}"
                 res.status(400).json
                     code: 4
                     err: 1
                     message: i18n.please_complete_the_captcha_correctly
                 false
             when "verify!"
+                console.log "Post result: code 5"
                 res.status(500).json
                     code: 5
                     err: 1
                     message: i18n.internal_serer_error
                 false
             when "verify"
+                console.log "Post result: code 6"
                 res.status(400).json
                     code: 6
                     err: 1
                     message: i18n.bad_request
                 false
             when "getFeed"
+                console.log "Post result: code 7"
                 res.status(500).json
                     code: 7
                     err: 1
                     message: i18n.internal_serer_error
                 false
             when "post"
+                console.log "Post result: code 8"
                 res.status(500).json
                     code: 8
                     err: 1
                     message: i18n.internal_serer_error
                 false
-
-        console.log err
+            else console.log "Uncaught error: #{err}"

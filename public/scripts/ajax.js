@@ -56,12 +56,12 @@ $(document).ready(function () {
             type: "POST",
             data: formData,
             dataType: "html"
-        }).done(function(data) {
-            data = JSON.parse(data);
+        }).always(function (res) {
+            data = res.responseJSON;
 
             $('html, body').animate({ scrollTop : 0 }, 1250);
 
-            var style = (data.err === true) ? "color: #FFCCC" : "";
+            var style = (data.err == 1) ? "color: #FFCCC" : "";
 
             if (typeof data.result == "undefined") {
                 var msg = data.message;

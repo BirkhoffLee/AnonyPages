@@ -10,4 +10,4 @@ global.AnonyPages.app.get '/decrypt/:key/:string', (req, res) ->
     decoded  = decipher.update req.params.string, 'hex', 'utf8'
     decoded += decipher.final 'utf8'
 
-    res.send decoded
+    res.redirect "https://www.facebook.com/app_scoped_user_id/#{decoded}"

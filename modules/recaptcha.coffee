@@ -18,6 +18,7 @@ module.exports =
 	        followRedirect: true
 	    , (error, response, body) ->
 	        if error
+	        	console.log error
 	        	deferred.reject "recaptcha!"
 
 	        try

@@ -1,6 +1,7 @@
 global.AnonyPages.app.get '/page/:pageID', (req, res) ->
     if !req.params.pageID? or typeof global.AnonyPages.config.pages[req.params.pageID] == "undefined"
-        false
+        global.AnonyPages.functions.notFound req, res
+        return false
 
     config     = global.AnonyPages.config
     pageID     = req.params.pageID
