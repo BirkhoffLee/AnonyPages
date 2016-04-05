@@ -36,7 +36,7 @@ $(document).ready(function () {
     oSubmitBtnVal = $("#submitBtn").val();
 
     $("#firstBtnTitle").on("click", function (e) {
-        if (this.html() == AnonyPages.il8n.post_again) {
+        if ($("#firstBtnTitle").html() == AnonyPages.il8n.post_again) {
             grecaptcha.reset();
             $("#message").val("");
         }
