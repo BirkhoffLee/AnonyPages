@@ -36,8 +36,9 @@ $(document).ready(function () {
     oSubmitBtnVal = $("#submitBtn").val();
 
     $("#firstBtnTitle").on("click", function (e) {
-        if ($("#firstBtnTitle").html() == AnonyPages.i18n.post_again) {
-            location.reload();
+        if (this.html() == AnonyPages.il8n.post_again) {
+            grecaptcha.reset();
+            $("#message").val("");
         }
     });
 
@@ -57,9 +58,13 @@ $(document).ready(function () {
             data: formData,
             dataType: "json"
         }).always(function (res) {
-            data = res.responseJSON;
+            if (typeof res.responseJSON == "undefined") {
+                data = res;
+            } else {
+                data = res.responseJSON;
+            }
 
-            $('html, body').animate({ scrollTop : 0 }, 1250);
+            $('*').animate({ scrollTop : 0 }, 1250);
 
             var style = (data.err == 1) ? "color: #FFEE58 !important" : "";
 
@@ -78,7 +83,7 @@ $(document).ready(function () {
 
             $("#title_message").html("<span style=\"" + style + "\">" + msg + "</span>");
 
-            $("#submitBtn").val(AnonyPages.i18n.scroll_to_top);
+            $("#submitBtn").val(oSubmitBtnVal);
             $("#firstBtnTitle").html(AnonyPages.i18n.post_again);
         });
     });
