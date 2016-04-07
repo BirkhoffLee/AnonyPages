@@ -7,7 +7,7 @@ module.exports = ->
     express     = require 'express'
     swig        = require 'swig'
     bodyParser  = require 'body-parser'
-    weblogger   = require 'morgan'
+    weblogger   = require 'morgan' if global.AnonyPages.enableWebLogger
 
     app         = global.AnonyPages.app = express()
     port        = global.AnonyPages.config.server.port
@@ -34,7 +34,7 @@ module.exports = ->
     ###
     # Request information logger
     ###
-    app.use weblogger ':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms'
+    app.use weblogger ':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms' if global.AnonyPages.enableWebLogger
 
     ###
     # Initalize form data parser
@@ -51,7 +51,7 @@ module.exports = ->
     # Start listening
     ###
     app.listen port, ->
-        console.log "AnonyPages web server listening on port #{port}"
+        console.log "AnonyPages web server listening on port #{port}" if global.AnonyPages.enableWebLogger
 
     ###
     # Last route: 404 Not Found

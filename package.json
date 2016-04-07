@@ -4,7 +4,7 @@
   "description": "Users can post to Facebook pages anonymously with AnonyPages.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./lib/index.js"
+    "test": "mocha ./test/server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,8 @@
     "swig": "^1.4.2"
   },
   "devDependencies": {
-    "coffee-script": "latest"
+    "coffee-script": "latest",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
   }
 }

@@ -7,7 +7,7 @@
 # @license MIT
 ###
 
-global.AnonyPages           = {}
+global.AnonyPages           = global.AnonyPages || {}
 global.AnonyPages.config    = require "./config"
 global.AnonyPages.i18n      = (require "./modules/i18n")()
 global.AnonyPages.functions = require "./modules/functions"
