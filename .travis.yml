@@ -5,6 +5,6 @@ notifications:
   email:
     - birkhoff.lee.cn@gmail.com
 before_script:
-  coffee --compile -o lib src
+  coffee --compile -o lib/ src/
 before_install:
   - npm install coffee-script
