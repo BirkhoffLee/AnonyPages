@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "5"
+notifications:
+  email:
+    - birkhoff.lee.cn@gmail.com
+before_script:
+  ./node_modules/.bin/cake build
+before_install:
+  - npm install coffee-script
