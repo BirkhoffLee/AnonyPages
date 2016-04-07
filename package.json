@@ -4,7 +4,7 @@
   "description": "Users can post to Facebook pages anonymously with AnonyPages.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/cake test"
+    "test": "node ./lib/index.js"
   },
   "repository": {
     "type": "git",
