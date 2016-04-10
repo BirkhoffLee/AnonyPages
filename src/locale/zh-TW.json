@@ -10,7 +10,7 @@
     "posting": "發佈中..",
     "post_again": "點我再次靠北！",
     "bad_request": "無效的請求",
-    "internal_serer_error": "內部伺服器錯誤",
+    "internal_server_error": "內部伺服器錯誤",
     "please_complete_the_captcha_correctly": "請正確完成人類驗證。",
     "time_submitted": "文章發佈日期：",
     "post_identifier": "貼文辨識碼：",

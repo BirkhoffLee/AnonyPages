@@ -59,7 +59,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 res.status(500).json
                     code: 2
                     err: 1
-                    message: i18n.internal_serer_error
+                    message: i18n.internal_server_error
                 false
 
         today     = new Date()
@@ -105,7 +105,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 res.status(500).json
                     code: 3
                     err: 1
-                    message: i18n.internal_serer_error
+                    message: i18n.internal_server_error
                 false
             when "recaptcha"
                 console.log "Post result: code 4"
@@ -120,7 +120,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 res.status(500).json
                     code: 5
                     err: 1
-                    message: i18n.internal_serer_error
+                    message: i18n.internal_server_error
                 false
             when "verify"
                 console.log "Post result: code 6"
@@ -134,13 +134,13 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 res.status(500).json
                     code: 7
                     err: 1
-                    message: i18n.internal_serer_error
+                    message: i18n.internal_server_error
                 false
             when "post"
                 console.log "Post result: code 8"
                 res.status(500).json
                     code: 8
                     err: 1
-                    message: i18n.internal_serer_error
+                    message: i18n.internal_server_error
                 false
             else console.log "Uncaught error: #{err}"

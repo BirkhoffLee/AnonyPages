@@ -10,7 +10,7 @@
     "posting": "Posting..",
     "post_again": "Press to post again!",
     "bad_request": "Bad request.",
-    "internal_serer_error": "Internal server error",
+    "internal_server_error": "Internal server error",
     "please_complete_the_captcha_correctly": "Please complete the captcha correctly.",
     "time_submitted": "Time Posted: ",
     "post_identifier": "The identifier of this post: ",
