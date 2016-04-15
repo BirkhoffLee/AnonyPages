@@ -16,5 +16,5 @@
     "post_identifier": "The identifier of this post: ",
     "posting_succeed": "Posted your article successfully!",
     "exclamation_mark": "!",
-    "login_to_facebook": "Please log in to Facebook. If your browser blocks pop-ups, please enable it for a while in order to log in to Facebook."
+    "login_to_facebook": "Please authorize our Facebook App. If your browser blocks pop-ups, please enable it for a while in order to authorize."
 }
