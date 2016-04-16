@@ -59,7 +59,14 @@ $(document).ready(function () {
             dataType: "json"
         }).always(function (res) {
             if (typeof res.responseJSON == "undefined") {
-                data = res;
+                if (res.status == 413) {
+                    data = {
+                        err: 1,
+                        message: AnonyPages.i18n.messageTooLong
+                    };
+                } else {
+                    data = res;
+                }
             } else {
                 data = res.responseJSON;
             }
