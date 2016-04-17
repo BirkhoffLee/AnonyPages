@@ -39,16 +39,19 @@ module.exports = ->
     ###
     # Initalize form data parser
     ###
-    app.use bodyParser.urlencoded {extended: false}
-    app.use bodyParser.json()
+    app.use bodyParser.urlencoded
+        limit: "50mb"
+        extended: false
+    app.use bodyParser.json
+        limit: "50mb"
 
     ###
-    # Routers
+    # Routes
     ###
     (require "require-directory") module, "#{__dirname}/../routes/"
 
     ###
-    # Start listening
+    # Launch server
     ###
     app.listen port, ->
         console.log "AnonyPages web server listening on port #{port}" if global.AnonyPages.enableWebLogger
