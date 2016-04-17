@@ -7,7 +7,7 @@ module.exports = ->
     express     = require 'express'
     swig        = require 'swig'
     bodyParser  = require 'body-parser'
-    weblogger   = require 'morgan' if global.AnonyPages.enableWebLogger
+    weblogger   = require 'morgan'
 
     app         = global.AnonyPages.app = express()
     port        = global.AnonyPages.config.server.port
@@ -54,7 +54,7 @@ module.exports = ->
     # Launch server
     ###
     app.listen port, ->
-        console.log "AnonyPages web server listening on port #{port}" if global.AnonyPages.enableWebLogger
+        console.log "AnonyPages web server listening on port #{port}"
 
     ###
     # Last route: 404 Not Found
