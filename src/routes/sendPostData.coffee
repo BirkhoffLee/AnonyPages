@@ -1,5 +1,6 @@
 crypto = require 'crypto'
 Q      = require 'q'
+fs     = require 'fs'
 
 global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     i18n = global.AnonyPages.i18n
