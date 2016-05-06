@@ -78,4 +78,4 @@ Thumbs.db
 config.coffee
 config.js
 lib/
-blacklist.db
+blacklist.list

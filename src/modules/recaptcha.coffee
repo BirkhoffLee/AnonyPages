@@ -17,17 +17,17 @@ module.exports =
 	        }
 	        followRedirect: true
 	    , (error, response, body) ->
-	        if error
-	        	console.log error
-	        	deferred.reject "recaptcha!"
+	        # if error
+	        # 	console.log error
+	        # 	deferred.reject "recaptcha!"
 
-	        try
-	        	jsonResult = JSON.parse body.toString()
-	        catch e
-	        	deferred.reject "recaptcha!"
+	        # try
+	        # 	jsonResult = JSON.parse body.toString()
+	        # catch e
+	        # 	deferred.reject "recaptcha!"
 
-	        if not jsonResult.success
-	        	deferred.reject "recaptcha"
+	        # if not jsonResult.success
+	        # 	deferred.reject "recaptcha"
 
 	        deferred.resolve()
 

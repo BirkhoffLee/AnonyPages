@@ -1,5 +1,4 @@
 crypto = require 'crypto'
-Q      = require 'q'
 fs     = require 'fs'
 
 global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
@@ -36,23 +35,22 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .then (information) ->
         userInfo = information
 
-        return Q.nfbind(fs.readFile, fs)("../blacklist.db")
-    .then (err, data) ->
-        if err
+        try
+            data = fs.readFileSync __dirname + "/../blacklist.list", "utf8"
+            if data && data.toString().trim().split("\n").indexOf(userInfo.id) == 1
+                console.log "Post result: code 12"
+                res.status(400).json
+                    code: 12
+                    err: 1
+                    message: i18n.blocked_id
+                false
+        catch err
             console.log err
             console.log "Post result: code 11"
             res.status(500).json
                 code: 11
                 err: 1
                 message: i18n.internal_server_error
-            false
-
-        if data && data.toString().trim().split("\n").indexOf(userInfo.id) == 1
-            console.log "Post result: code 12"
-            res.status(400).json
-                code: 12
-                err: 1
-                message: i18n.blocked_id
             false
 
         return facebookObj.getPageFeed pageID, accessToken
