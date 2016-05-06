@@ -10,7 +10,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
             code: 1
             err: 1
             message: i18n.bad_request
-        false
+        throw new Error "abort"
 
     config       = global.AnonyPages.config
     pageID       = req.params.pageID
@@ -27,7 +27,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
             code: 10
             err: 1
             message: i18n.login_to_facebook
-        false
+        throw new Error "abort"
 
     global.AnonyPages.recaptcha.verify req.body["g-recaptcha-response"]
     .then ->
@@ -46,15 +46,16 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                     code: 12
                     err: 1
                     message: i18n.blocked_id
-                false
+                throw new Error "abort"
         catch err
-            console.log err
-            console.log "Post result: code 11"
-            res.status(500).json
-                code: 11
-                err: 1
-                message: i18n.internal_server_error
-            false
+            if err.code != "ENOENT"
+                console.log err
+                console.log "Post result: code 11"
+                res.status(500).json
+                    code: 11
+                    err: 1
+                    message: i18n.internal_server_error
+                throw new Error "abort"
 
         return facebookObj.getPageFeed pageID, accessToken
     .then (pageFeed) ->
@@ -83,7 +84,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                     code: 2
                     err: 1
                     message: i18n.internal_server_error
-                false
+                throw new Error "abort"
 
         today     = new Date()
         yyyy      = today.getFullYear()
@@ -118,6 +119,9 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 hashtag: nextHashtag
                 postid: postID
     .fail (err) ->
+        if err.message == "abort"
+            return
+
         switch err
             when "recaptcha!"
                 console.log "Post result: code 3"
@@ -125,7 +129,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                     code: 3
                     err: 1
                     message: i18n.internal_server_error
-                false
+                return
             when "recaptcha"
                 console.log "Post result: code 4"
                 console.log "reCAPTCHA response: #{req.body["g-recaptcha-response"]}"
@@ -133,33 +137,33 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                     code: 4
                     err: 1
                     message: i18n.please_complete_the_captcha_correctly
-                false
+                return
             when "verify!"
                 console.log "Post result: code 5"
                 res.status(500).json
                     code: 5
                     err: 1
                     message: i18n.internal_server_error
-                false
+                return
             when "verify"
                 console.log "Post result: code 6"
                 res.status(400).json
                     code: 6
                     err: 1
                     message: i18n.bad_request
-                false
+                return
             when "getFeed"
                 console.log "Post result: code 7"
                 res.status(500).json
                     code: 7
                     err: 1
                     message: i18n.internal_server_error
-                false
+                return
             when "post"
                 console.log "Post result: code 8"
                 res.status(500).json
                     code: 8
                     err: 1
                     message: i18n.internal_server_error
-                false
+                return
             else console.log "Uncaught error: #{err}"

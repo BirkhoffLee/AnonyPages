@@ -34,7 +34,7 @@ module.exports = ->
     ###
     # Request information logger
     ###
-    app.use weblogger ':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms' if global.AnonyPages.enableWebLogger
+    app.use weblogger ':remote-addr - ":user-agent" - ":method :url HTTP/:http-version" :status - :response-time ms'
 
     ###
     # Initalize form data parser
