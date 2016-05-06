@@ -36,7 +36,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .then (information) ->
         userInfo = information
 
-        return Q.nfbind(fs.readFile, fs)(__dirname + "../blacklist.db")
+        return Q.nfbind(fs.readFile, fs)("../blacklist.db")
     .then (err, data) ->
         if err
             console.log err
