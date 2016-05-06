@@ -17,5 +17,6 @@
     "posting_succeed": "Posted your article successfully!",
     "exclamation_mark": "!",
     "login_to_facebook": "Please authorize our Facebook App. If your browser blocks pop-ups, please enable it for a while in order to authorize.",
-    "messageTooLong": "Your post is too long."
+    "messageTooLong": "Your post is too long.",
+    "blocked_id": "Failed posting the article! Due to breaching our terms of service, you have been blocked by the admin. If you have any question, please send a message to the page. Sorry for the inconvenience."
 }
