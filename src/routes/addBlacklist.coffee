@@ -1,12 +1,13 @@
-crypto = require "crypto"
+fs = require "fs"
 
 global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
     config = global.AnonyPages.config
+    i18n   = global.AnonyPages.i18n
 
     if !req.params.key? or !req.params.identifier or req.params.key != config.adminKey
         false
 
-    fs.writeFile __dirname + "/../blacklist.list", "\n#{identifier}", (err) ->
+    fs.appendFile __dirname + "/../blacklist.list", "\n" + req.params.identifier, (err) ->
         if err
             console.log err
             res.status(500).json
