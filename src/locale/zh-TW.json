@@ -19,5 +19,8 @@
     "login_to_facebook": "請授權我們的 Facebook 應用程式。若您的瀏覽器會阻擋彈出式視窗，請暫時允許以進行授權事宜。",
     "messageTooLong": "您的貼文長度過長，請分段發送。",
     "blocked_id": "發文失敗！您因違反使用者條約而遭到管理員封鎖。造成不便，敬請見諒。若有疑問，歡迎聯絡本專頁。",
-    "done_add_blacklist": "將此貼文標識碼加入黑名單完成。"
+    "done_add_blacklist": "將此貼文辨識碼加入黑名單完成。",
+    "done_remove_blacklist": "將此貼文辨識碼自黑名單移除完成。",
+    "blacklist_not_exist": "此辨識碼並未被加入黑名單。",
+    "identifier_already_added": "此辨識碼已在黑名單內。"
 }

@@ -1,6 +1,6 @@
 fs = require "fs"
 
-global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
+global.AnonyPages.app.get '/removeBlacklist/:key/:identifier', (req, res) ->
     config = global.AnonyPages.config
     i18n   = global.AnonyPages.i18n
 
@@ -17,13 +17,10 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
             false
 
         if data.toString().indexOf(req.params.identifier) != -1
-            res.status(200).json
-                code: 1
-                err: 0
-                message: i18n.identifier_already_added
-            true
-        else
-            fs.appendFile __dirname + "/../blacklist.list", "\n" + req.params.identifier, (err) ->
+            re = new RegExp req.params.identifier, "gi"
+            writeData = data.replace(re, "").trim()
+
+            fs.writeFile __dirname + "/../blacklist.list", writeData, (err) ->
                 if err
                     console.log err
                     res.status(500).json
@@ -34,4 +31,9 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
                 res.status(200).json
                     code: 0
                     err: 0
-                    message: i18n.done_add_blacklist
+                    message: i18n.done_remove_blacklist
+        else
+            res.status(200).json
+                code: 1
+                err: 0
+                message: i18n.blacklist_not_exist
