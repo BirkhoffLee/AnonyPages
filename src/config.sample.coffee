@@ -17,8 +17,8 @@ module.exports =
 
             # Follow this tutorial: http://stackoverflow.com/questions/12168452/long-lasting-fb-access-token-for-server-to-pull-fb-page-info/21927690#21927690
             access_token: ""
-    # Encrypting key
-    encryptKey: "CHANGE ME WITH RAMDOM VALUE"
+    # Admin & encrypt key
+    adminKey: "CHANGE ME WITH RAMDOM VALUE"
     server:
         # Web server port
         port: 1826
