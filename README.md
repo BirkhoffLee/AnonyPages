@@ -2,11 +2,17 @@
 Posting articles anonymously to Facebook Pages.
 
 # Docker image
-Download our official Docker image with this command:
+Run our official Docker image with this command:
 
-`
-$ docker pull birkhofflee/anonypages
-`
+```
+$ docker run -itd birkhofflee/anonypages
+```
+
+And attach to the container...
+
+```
+$ docker attach [CONTAINER_ID]
+```
 
 View more: [birkhofflee/anonypages on Docker Hub](https://hub.docker.com/r/birkhofflee/anonypages/)
 
