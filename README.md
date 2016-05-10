@@ -1,17 +1,11 @@
 # AnonyPages [![Build Status](https://travis-ci.org/BirkhoffLee/AnonyPages.svg?branch=master)](https://travis-ci.org/BirkhoffLee/AnonyPages)
 Posting articles anonymously to Facebook Pages.
 
-# Docker image
-Run our official Docker image with this command:
+# Docker Image
+Run our official Docker container with an interactive shell with this command:
 
 ```
-$ docker run -itd birkhofflee/anonypages
-```
-
-And attach to the container...
-
-```
-$ docker attach [CONTAINER_ID]
+$ docker exec -it $(docker run -itd birkhofflee/anonypages) bash
 ```
 
 View more: [birkhofflee/anonypages on Docker Hub](https://hub.docker.com/r/birkhofflee/anonypages/)
