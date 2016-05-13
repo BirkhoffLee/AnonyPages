@@ -36,4 +36,4 @@ RUN npm i
 EXPOSE 80 443 22/udp
 
 # Restart sshd
-/etc/init.d/ssh restart
+ENTRYPOINT /etc/init.d/ssh restart
