@@ -50,3 +50,6 @@ RUN npm i
 
 # Ports
 EXPOSE 80 443 22/udp
+
+# Start sshd
+RUN service ssh start
