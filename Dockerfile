@@ -34,6 +34,3 @@ RUN npm i
 
 # Ports
 EXPOSE 80 443 22/udp
-
-# Restart sshd
-CMD /etc/init.d/ssh restart
