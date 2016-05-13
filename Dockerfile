@@ -12,6 +12,7 @@ RUN apt-get update; \
     apt-get autoclean; \
     apt-get autoremove; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
+    echo "" > /etc/legal; \
     mkdir ~/.ssh; \
     touch ~/.ssh/authorized_keys
 
