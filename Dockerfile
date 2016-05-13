@@ -42,7 +42,7 @@ WORKDIR ~
 RUN mkdir /var/www; \
     chmod 755 /var/www; \
     cd /var/www; \
-    git clone https://github.com/BirkhoffLee/AnonyPages
+    git clone git://github.com/BirkhoffLee/AnonyPages
 
 # Prepare AnonyPages
 WORKDIR /var/www/AnonyPages
