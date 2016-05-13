@@ -13,7 +13,7 @@ RUN apt-get update; \
     apt-get autoremove; \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
     mkdir ~/.ssh; \
-    touch ~/.ssh/authorized_keys \
+    touch ~/.ssh/authorized_keys; \
     /etc/init.d/ssh restart
 
 # Set MOTD
@@ -50,6 +50,3 @@ RUN npm i
 
 # Ports
 EXPOSE 80 443 22/udp
-
-# Start sshd
-RUN service ssh start
