@@ -2,7 +2,7 @@
 Posting articles anonymously to Facebook Pages.
 
 # Docker Image
-Run our official Docker container with an interactive shell with this command (assuming you are running AnonyPages HTTP service on port 1826):
+Deploy & run our official Docker image with the following commands (assuming the AnonyPages HTTP service is listening tcp port 1826):
 
 ```
 $ docker run -itd -p 1826:1826 -v /path/to/anonypages/config.coffee:/var/www/AnonyPages/src/config.coffee:ro birkhofflee/anonypages

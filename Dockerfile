@@ -31,4 +31,4 @@ EXPOSE 1826
 
 # Run
 WORKDIR /var/www/AnonyPages/src
-CMD forever start -c coffee index.coffee
+CMD forever start -c coffee index.coffee && bash
