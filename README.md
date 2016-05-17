@@ -1,4 +1,4 @@
-# AnonyPages [![Build Status](https://travis-ci.org/BirkhoffLee/AnonyPages.svg?branch=master)](https://travis-ci.org/BirkhoffLee/AnonyPages)
+# AnonyPages [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]() [![Build Status](https://travis-ci.org/BirkhoffLee/AnonyPages.svg?branch=master)](https://travis-ci.org/BirkhoffLee/AnonyPages) [![Docker Pulls](https://img.shields.io/docker/pulls/mashape/kong.svg?maxAge=2592000)]()
 Posting articles anonymously to Facebook Pages.
 
 # Docker Image
