@@ -6,7 +6,7 @@ MAINTAINER Birkhoff Lee <birkhoff.lee.cn@gmail.com>
 WORKDIR ~
 RUN apt-get update; \
     apt-get upgrade -y; \
-    apt-get install nodejs-legacy npm git -y --no-install-recommends; \
+    apt-get install nodejs-legacy npm git -y -q --no-install-recommends; \
     apt-get clean; \
     apt-get autoclean; \
     apt-get autoremove; \
@@ -27,7 +27,7 @@ WORKDIR /var/www/AnonyPages
 RUN npm i
 
 # Ports
-EXPOSE 80 443
+EXPOSE 1826
 
 # Run
 WORKDIR /var/www/AnonyPages/src
