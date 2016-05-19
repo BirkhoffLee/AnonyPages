@@ -6,7 +6,7 @@ MAINTAINER Birkhoff Lee <birkhoff.lee.cn@gmail.com>
 WORKDIR ~
 RUN apt-get update; \
     apt-get upgrade -y; \
-    apt-get install nodejs-legacy npm git -y -q --no-install-recommends; \
+    apt-get install nodejs-legacy npm git ca-certificates -y -q --no-install-recommends; \
     apt-get clean; \
     apt-get autoclean; \
     apt-get autoremove; \
@@ -20,7 +20,7 @@ WORKDIR ~
 RUN mkdir /var/www; \
     chmod 755 /var/www; \
     cd /var/www; \
-    git clone git://github.com/BirkhoffLee/AnonyPages
+    git clone https://github.com/BirkhoffLee/AnonyPages
 
 # Prepare AnonyPages
 WORKDIR /var/www/AnonyPages
@@ -31,4 +31,4 @@ EXPOSE 1826
 
 # Run
 WORKDIR /var/www/AnonyPages/src
-CMD forever start -c coffee index.coffee && bash
+CMD /bin/bash -c "forever start -c coffee index.coffee &> /dev/null && forever logs -f 0"
