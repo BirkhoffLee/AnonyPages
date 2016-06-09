@@ -40,7 +40,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
         try
             data = fs.readFileSync __dirname + "/../blacklist.list", "utf8"
 
-            if data && data.toString().trim().split("\n").indexOf(identifier) == 1
+            if data && data.toString().trim().split("\n").indexOf(identifier) != -1
                 console.log "Post result: code 12"
                 res.status(400).json
                     code: 12
