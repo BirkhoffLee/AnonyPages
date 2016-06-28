@@ -12,7 +12,11 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
     fs.open path, "wx", (err, fd) ->
         fs.close fd, (err) ->
             console.log "Created a blank blacklist file"
-    
+    try
+        fs.writeFileSync path, "" if !fs.statSync(path).isFile()
+    catch e
+        # ignore
+
     fs.readFile path, encoding: 'utf8', (error, data) ->
         if error
             console.log error
