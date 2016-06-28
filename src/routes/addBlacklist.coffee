@@ -3,7 +3,7 @@ fs = require "fs"
 global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
     config = global.AnonyPages.config
     i18n   = global.AnonyPages.i18n
-    path   = __dirname + "/../blacklist.list"
+    path   = "../blacklist.list"
 
     if !req.params.key? or !req.params.identifier or req.params.key != config.adminKey
         false
