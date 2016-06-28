@@ -10,8 +10,8 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
 
     # Create blacklist.list if not exists
     fs.writeFile path, "", flag: 'wx', (err) ->
-        if error
-            console.log error
+        if err
+            console.log err
             res.status(500).json
                 code: 4
                 err: 1
