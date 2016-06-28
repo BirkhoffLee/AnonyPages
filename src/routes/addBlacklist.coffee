@@ -9,7 +9,9 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
         false
 
     # Create blacklist.list if not exists
-    fs.readFile path, { encoding: 'utf8', flag: 'wx' }, (error, data) ->
+    fs.closeSync fs.openSync filepath, 'w'
+    
+    fs.readFile path, encoding: 'utf8', (error, data) ->
         if error
             console.log error
             res.status(500).json
