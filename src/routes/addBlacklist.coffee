@@ -3,15 +3,12 @@ fs = require "fs"
 global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
     config = global.AnonyPages.config
     i18n   = global.AnonyPages.i18n
-    path   = "../blacklist.list"
+    path   = __dirname + "/../blacklist.list"
 
     if !req.params.key? or !req.params.identifier or req.params.key != config.adminKey
         false
 
     # Create blacklist.list if not exists
-    fs.open path, "wx", (err, fd) ->
-        fs.close fd, (err) ->
-            console.log "Created a blank blacklist file"
     try
         fs.writeFileSync path, "" if !fs.statSync(path).isFile()
     catch e
@@ -27,6 +24,7 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
             false
 
         if data.toString().indexOf(req.params.identifier) != -1
+            console.log data.toString()
             res.status(200).json
                 code: 1
                 err: 0
