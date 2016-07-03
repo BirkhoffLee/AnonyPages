@@ -7,7 +7,7 @@ global.AnonyPages.app.get '/decrypt/:key/:string', (req, res) ->
         false
 
     try
-        decipher = crypto.createDecipher 'aes-256-cbc', config.adminKey.toString 'binary'
+        decipher = crypto.createDecipher 'aes-256-cbc', config.encryptKey.toString 'binary'
         decoded  = decipher.update req.params.string, 'hex', 'utf8'
         decoded += decipher.final 'utf8'
     catch

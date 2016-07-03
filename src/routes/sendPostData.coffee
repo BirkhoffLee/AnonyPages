@@ -33,7 +33,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .then ->
         return facebookObj.verifyUserAccessToken req.body.o
     .then (userInfo) ->
-        cipher     = crypto.createCipher 'aes-256-cbc', config.adminKey.toString 'binary'
+        cipher     = crypto.createCipher 'aes-256-cbc', config.encryptKey.toString 'binary'
         identifier = cipher.update userInfo.id, 'utf8', 'hex'
         identifier += cipher.final 'hex'
 

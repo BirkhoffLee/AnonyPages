@@ -17,17 +17,31 @@ module.exports =
 
             # Follow this tutorial: http://stackoverflow.com/questions/12168452/long-lasting-fb-access-token-for-server-to-pull-fb-page-info/21927690#21927690
             access_token: ""
-    # Admin & encrypt key
+
+    # Admin & encrypt key, no symbols in them
     adminKey: "CHANGE ME WITH RAMDOM VALUE"
+    encryptKey: "CHANGE ME WITH RAMDOM VALUE"
+
+    ##
+    # Web server settings
+    ##
     server:
         # Web server port
         port: 1826
+
+    ##
+    # Google reCAPTCHA Settings
+    ##
     googleRecaptcha:
         siteKey: "SITE_KEY"
         siteSecret: "SITE_SECRET"
 
         # Don't touch
         verifyURL: "https://www.google.com/recaptcha/api/siteverify"
+
+    ##
+    # Facebook APP settings
+    ##
     facebook:
         app_id: "APP_ID"
         app_secret: "APP_SECRET"
