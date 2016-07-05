@@ -47,11 +47,15 @@
             <!-- Two -->
                 <section id="two" class="main special">
                     <div class="container">
-                        <div class="content">
+                        <div class="content" style="padding-bottom: 2em">
                             <header class="major">
-                                <h2>{{ i18n.human_verification|title }}</h2>
+                                <h2>{{ postLabel }}</h2>
                             </header>
-                            <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}"></div>
+                            <div class="row uniform">
+                                <div class="12u$">
+                                    <textarea name="message" id="message" placeholder="{{ postPlaceholder }}" rows="11" style="resize: vertical"></textarea>
+                                </div>
+                            </div>
                         </div>
                         <a href="#footer" class="goto-next scrolly">{{ i18n.next_step|title }}</a>
                     </div>
@@ -61,14 +65,12 @@
                 <section id="footer">
                     <div class="container">
                         <header class="major">
-                            <h2>{{ postLabel }}</h2>
+                            <h2>{{ i18n.human_verification| title }}</h2>
                         </header>
+                            <div class="g-recaptcha" dat a-sitekey="{{ gRsitekey }}" style="margin:0 auto; width: 304px;padding-top: 1.1em; padding-bottom: 3.1em"></div>
 
                             <div class="row uniform">
-                                <div class="12u$">
-                                    <textarea name="message" id="message" placeholder="{{ postPlaceholder }}" rows="8" style="resize: vertical"></textarea>
-                                </div>
-                                <div class="12u$">
+                                <div class="12u$" style="padding-bottom: 1em">
                                     <ul class="actions">
                                         <!-- Post! -->
                                         <li><input type="submit" id="submitBtn" value="{{ i18n.post }}" class="special" /></li>
