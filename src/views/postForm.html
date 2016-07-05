@@ -37,7 +37,7 @@
                                 <h2>{{ i18n.terms_of_service|title }}</h2>
                             </header>
                             <p>
-                                <textarea class="noresize{" rows="15" readonly>{{ Terms|safe }}</textarea>
+                                <textarea class="noresize" rows="13" readonly>{{ Terms|safe }}</textarea>
                             </p>
                         </div>
                         <a href="#two" class="goto-next scrolly">{{ i18n.i_have_read_tos_carefully|title }}</a>
@@ -67,7 +67,7 @@
                         <header class="major">
                             <h2>{{ i18n.human_verification| title }}</h2>
                         </header>
-                            <div class="g-recaptcha" dat a-sitekey="{{ gRsitekey }}" style="margin:0 auto; width: 304px;padding-top: 1.1em; padding-bottom: 3.1em"></div>
+                            <div class="g-recaptcha" data-sitekey="{{ gRsitekey }}" style="margin:0 auto; width: 304px;padding-top: 1.1em; padding-bottom: 3.1em"></div>
 
                             <div class="row uniform">
                                 <div class="12u$" style="padding-bottom: 1em">
