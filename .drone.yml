@@ -1,0 +1,6 @@
+build:
+  image: shouldbee/coffeescript
+  commands:
+    - coffee --compile -o lib/ src/
+    - cp lib/config.sample.js lib/config.js
+    - mocha ./test/server.js
