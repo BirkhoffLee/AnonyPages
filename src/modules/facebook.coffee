@@ -14,7 +14,8 @@ FacebookAPI = ->
 FacebookAPI.prototype.verifyUserAccessToken = (accessToken) ->
     deferred    = Q.defer()
     self        = this
-    url         = self.verifyUserAccessTokenURL.replace "{accessToken}", accessToken
+    url         = self.verifyUserAccessTokenURL
+                    .replace "{accessToken}", accessToken
 
     request
         url      : url
@@ -43,7 +44,8 @@ FacebookAPI.prototype.verifyUserAccessToken = (accessToken) ->
 FacebookAPI.prototype.getPageFeed = (pageID, accessToken) ->
     deferred    = Q.defer()
     self        = this
-    url         = self.getFeedURL.replace("{pageID}", pageID).replace "{accessToken}", accessToken
+    url         = self.getFeedURL.replace("{pageID}", pageID)
+                    .replace "{accessToken}", accessToken
 
     request
         url      : url
