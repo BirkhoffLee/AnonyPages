@@ -18,10 +18,7 @@ $ docker logs -f [CONTAINER ID]
 Docker Hub repository URL: https://hub.docker.com/r/birkhofflee/anonypages/
 
 # Blocking a user
-Open /addBlacklist/{YOUR_ADMIN_KEY}/{IDENTIFIER}
+Open /addBlacklist/<YOUR_ADMIN_KEY>/{IDENTIFIER}
 
 # Stop blocking a user
-Open /removeBlacklist/{YOUR_ADMIN_KEY}/{IDENTIFIER}
-
-# Decrypting article identifiers
-Open /decrypt/{YOUR_ADMIN_KEY}/{IDENTIFIER}
+Open /removeBlacklist/<YOUR_ADMIN_KEY>/{IDENTIFIER}
