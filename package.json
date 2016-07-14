@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "coffee-script": "latest",
+    "coffeelint": "^1.15.7",
     "mocha": "^2.4.5",
     "supertest": "^1.2.0"
   }
