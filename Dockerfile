@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Birkhoff Lee <birkhoff.lee.cn@gmail.com>
+MAINTAINER Birkhoff Lee <admin@birkhoff.me>
 
 # Set the environment up
 WORKDIR ~
