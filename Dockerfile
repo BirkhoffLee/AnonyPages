@@ -22,7 +22,7 @@ RUN export NODE_ENV=production; \
     apt-get remove --purge -y $BUILD_PACKAGES $(apt-mark showauto); \
     rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*;
 
-EXPOSE 1827
+EXPOSE 1829
 
 WORKDIR /var/www/AnonyPages/src
 CMD /bin/bash -c "forever start -c coffee index.coffee &> /dev/null && forever logs -f 0"
