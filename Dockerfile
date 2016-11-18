@@ -14,7 +14,7 @@ RUN export NODE_ENV=production; \
     wget "https://github.com/BirkhoffLee/AnonyPages/archive/master.zip"; \
     unzip master.zip -d .; \
     rm master.zip; \
-    cd jumper-master; \
+    cd AnonyPages-master; \
     npm install; \
     apt-get clean; \
     apt-get autoclean; \
@@ -24,5 +24,5 @@ RUN export NODE_ENV=production; \
 
 EXPOSE 1829
 
-WORKDIR /var/www/AnonyPages/src
+WORKDIR /var/www/AnonyPages-master/src
 CMD /bin/bash -c "forever start -c coffee index.coffee &> /dev/null && forever logs -f 0"
