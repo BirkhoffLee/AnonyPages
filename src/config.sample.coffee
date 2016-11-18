@@ -27,7 +27,7 @@ module.exports =
     ##
     server:
         # Web server port
-        port: 1826
+        port: 1827
 
     ##
     # Google reCAPTCHA Settings
