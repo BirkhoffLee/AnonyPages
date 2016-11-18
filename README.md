@@ -7,7 +7,7 @@ I usually run a website on Docker with [jwilder/nginx-proxy](https://github.com/
 ```
 $ docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy
 $ touch /path/to/blacklist.list
-$ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages/src/config.coffee:ro -v /path/to/blacklist.list:/var/www/AnonyPages/src/blacklist.list -e "VIRTUAL_HOST=DOMAIN_1(,DOMAIN_2,...)" birkhofflee/anonypages
+$ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages-master/src/config.coffee:ro -v /path/to/blacklist.list:/var/www/AnonyPages-master/src/blacklist.list -e "VIRTUAL_HOST=DOMAIN_1(,DOMAIN_2,...)" birkhofflee/anonypages
 ```
 
 For wildcard hosts please check this out: https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts
