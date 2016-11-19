@@ -1,10 +1,10 @@
 fs = require "fs"
 
-global.AnonyPages.app.get '/removeBlacklist/:key/:identifier', (req, res) ->
+global.AnonyPages.app.get '/removeBlacklist/:key/:hash', (req, res) ->
     config = global.AnonyPages.config
     i18n   = global.AnonyPages.i18n
 
-    if !req.params.key? or !req.params.identifier or req.params.key != config.adminKey
+    if !req.params.key? or !req.params.hash or req.params.key != config.adminKey
         false
 
     fs.readFile __dirname + "/../blacklist.list", "utf8", (err, data) ->
@@ -16,8 +16,8 @@ global.AnonyPages.app.get '/removeBlacklist/:key/:identifier', (req, res) ->
                 message: i18n.internal_server_error
             false
 
-        if data.toString().indexOf(req.params.identifier) != -1
-            re = new RegExp req.params.identifier, "gi"
+        if data.toString().indexOf(req.params.hash) != -1
+            re = new RegExp req.params.hash, "gi"
             writeData = data.replace(re, "").trim()
 
             fs.writeFile __dirname + "/../blacklist.list", writeData, (err) ->

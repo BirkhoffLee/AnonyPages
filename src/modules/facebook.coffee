@@ -1,6 +1,6 @@
 request = require "request"
-Q       = require "q"
-i18n    = global.AnonyPages.i18n
+Q = require "q"
+i18n = global.AnonyPages.i18n
 
 FacebookAPI = ->
     config = global.AnonyPages.config.facebook
@@ -12,10 +12,10 @@ FacebookAPI = ->
     this.verifyUserAccessTokenURL = config.verifyUserAccessTokenURL
 
 FacebookAPI.prototype.verifyUserAccessToken = (accessToken) ->
-    deferred    = Q.defer()
-    self        = this
-    url         = self.verifyUserAccessTokenURL
-                    .replace "{accessToken}", accessToken
+    deferred = Q.defer()
+    self = this
+    url = self.verifyUserAccessTokenURL
+            .replace "{accessToken}", accessToken
 
     request
         url      : url
@@ -42,9 +42,9 @@ FacebookAPI.prototype.verifyUserAccessToken = (accessToken) ->
     deferred.promise
 
 FacebookAPI.prototype.getPageFeed = (pageID, accessToken) ->
-    deferred    = Q.defer()
-    self        = this
-    url         = self.getFeedURL.replace("{pageID}", pageID)
+    deferred = Q.defer()
+    self = this
+    url = self.getFeedURL.replace("{pageID}", pageID)
                     .replace "{accessToken}", accessToken
 
     request
@@ -72,9 +72,9 @@ FacebookAPI.prototype.getPageFeed = (pageID, accessToken) ->
     deferred.promise
 
 FacebookAPI.prototype.postArticleToPage = (pageID, accessToken, message) ->
-    deferred    = Q.defer()
-    self        = this
-    url         = self.postArticleURL.replace "{pageID}", pageID
+    deferred = Q.defer()
+    self = this
+    url = self.postArticleURL.replace "{pageID}", pageID
 
     request.post
         url      : url

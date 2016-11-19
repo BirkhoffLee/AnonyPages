@@ -19,7 +19,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     facebookObj  = new global.AnonyPages.facebook()
     pageFeed     = null
     nextHashtag  = ""
-    identifier   = null
+    hash         = null
 
     if req.body.o == "unauthorized"
         console.log "Post result: code 10"
@@ -33,14 +33,12 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
     .then ->
         return facebookObj.verifyUserAccessToken req.body.o
     .then (userInfo) ->
-        cipher     = crypto.createCipher 'aes-256-cbc', config.encryptKey.toString 'binary'
-        identifier = cipher.update userInfo.id, 'utf8', 'hex'
-        identifier += cipher.final 'hex'
+        hash = crypto.createHash('md5').update(userInfo.id).digest('hex')
 
         try
             data = fs.readFileSync __dirname + "/../blacklist.list", "utf8"
 
-            if data && data.toString().trim().split("\n").indexOf(identifier) != -1
+            if data && data.toString().trim().split("\n").indexOf(hash) != -1
                 console.log "Post result: code 12"
                 res.status(400).json
                     code: 12
@@ -102,7 +100,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
         message  += req.body.message.trim() + "\n\n"
         message  += i18n.time_submitted + time + "\n"
         message  += afterPost + "\n"
-        message  += i18n.post_identifier + identifier
+        message  += i18n.post_hash + hash
 
         return facebookObj.postArticleToPage pageID, accessToken, message
     .then (postData) ->

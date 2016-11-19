@@ -1,5 +1,5 @@
-var request    = require('supertest');
-var assert     = require('assert');
+var request = require('supertest');
+var assert = require('assert');
 
 var AnonyPages = require('../lib/index.js');
 

@@ -13,14 +13,14 @@
     "internal_server_error": "Internal server error",
     "please_complete_the_captcha_correctly": "Please complete the captcha correctly.",
     "time_submitted": "Time Posted: ",
-    "post_identifier": "The identifier of this post: ",
+    "post_hash": "The hash of this post: ",
     "posting_succeed": "Posted your article successfully!",
     "exclamation_mark": "!",
     "login_to_facebook": "Please authorize our Facebook App. If your browser blocks pop-ups, please enable it for a while in order to authorize.",
     "messageTooLong": "Your post is too long.",
     "blocked_id": "Failed posting the article! Due to breaching our terms of service, you have been blocked by the admin. If you have any question, please send a message to the page. Sorry for the inconvenience.",
-    "done_add_blacklist": "Completed adding the identifier to the blacklist!",
-    "done_remove_blacklist": "Completed removing the identifier to the blacklist!",
-    "blacklist_not_exist": "The identifier isn't in the blacklist.",
-    "identifier_already_added": "The identifier is already in the blacklist."
+    "done_add_blacklist": "Completed adding the hash to the blacklist!",
+    "done_remove_blacklist": "Completed removing the hash to the blacklist!",
+    "blacklist_not_exist": "The hash isn't in the blacklist.",
+    "hash_already_added": "The hash is already in the blacklist."
 }

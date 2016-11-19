@@ -20,9 +20,8 @@
     <sup><i>Posting articles anonymously to Facebook Pages has never been so easy.</i></sup>
 </p>
 
-
 # Deployment
-I usually run a website on Docker with [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), and I recommend you to use it too. So simply run the following to launch AnonyPages:
+I usually run a website on Docker with [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), and I recommend you to use it too. So simply modify the configuration file, re-name it to `config.coffee` and run the following commands to launch AnonyPages:
 
 ```
 $ docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy
@@ -30,19 +29,19 @@ $ touch /path/to/blacklist.list
 $ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages-master/src/config.coffee:ro -v /path/to/blacklist.list:/var/www/AnonyPages-master/src/blacklist.list -e "VIRTUAL_HOST=DOMAIN_1(,DOMAIN_2,...)" birkhofflee/anonypages
 ```
 
-For wildcard hosts please check this out: https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts
+For wildcard hosts please check this out: (https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts)[https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts].
 
-# Blocking a user
-Open `/addBlacklist/<YOUR_ADMIN_KEY>/{IDENTIFIER}`
+# Blocking A Facebook User
+Open `/addBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 
-# Stop blocking a user
-Open `/removeBlacklist/<YOUR_ADMIN_KEY>/{IDENTIFIER}`
+# Unblocking A Facebook User
+Open `/removeBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 
-# Contributing
+# Contributiing
 Only one rule: **Test before submitting a pull request**.
 
-# Security Reports
-Please contact [admin@birkhoff.me](mailto:admin@birkhoff.me), thank you very much.
+# Security Reportings
+Please contact [admin@birkhoff.me](mailto:admin@birkhoff.me).
 
 # License
 See [LICENSE](LICENSE).

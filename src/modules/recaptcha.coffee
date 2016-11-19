@@ -1,4 +1,4 @@
-Q 		= require "q"
+Q = require "q"
 request = require "request"
 
 module.exports =

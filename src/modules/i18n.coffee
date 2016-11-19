@@ -6,7 +6,7 @@ module.exports = ->
     try
         result = require langPath
     catch e
-        new Error "Could not load the locale file which should located at #{langPath}"
+        new Error "Could not load the locale file which should located at #{langPath} according to the configuration file"
         false
 
     result

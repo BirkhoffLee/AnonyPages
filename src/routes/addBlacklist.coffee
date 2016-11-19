@@ -1,11 +1,11 @@
 fs = require "fs"
 
-global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
+global.AnonyPages.app.get '/addBlacklist/:key/:hash', (req, res) ->
     config = global.AnonyPages.config
     i18n   = global.AnonyPages.i18n
     path   = __dirname + "/../blacklist.list"
 
-    if !req.params.key? or !req.params.identifier or req.params.key != config.adminKey
+    if !req.params.key? or !req.params.hash or req.params.key != config.adminKey
         false
 
     # Create blacklist.list if not exists
@@ -23,15 +23,15 @@ global.AnonyPages.app.get '/addBlacklist/:key/:identifier', (req, res) ->
                 message: i18n.internal_server_error
             false
 
-        if data.toString().indexOf(req.params.identifier) != -1
+        if data.toString().indexOf(req.params.hash) != -1
             console.log data.toString()
             res.status(200).json
                 code: 1
                 err: 0
-                message: i18n.identifier_already_added
+                message: i18n.hash_already_added
             true
         else
-            fs.appendFile path, "\n" + req.params.identifier, (err) ->
+            fs.appendFile path, "\n" + req.params.hash, (err) ->
                 if err
                     console.log err
                     res.status(500).json

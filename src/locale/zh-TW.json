@@ -13,7 +13,7 @@
     "internal_server_error": "內部伺服器錯誤",
     "please_complete_the_captcha_correctly": "請正確完成人類驗證。",
     "time_submitted": "文章發佈日期：",
-    "post_identifier": "貼文辨識碼：",
+    "post_hash": "貼文辨識碼：",
     "posting_succeed": "您的貼文已發佈完成！",
     "exclamation_mark": "！",
     "login_to_facebook": "請授權我們的 Facebook 應用程式。若您的瀏覽器會阻擋彈出式視窗，請暫時允許以進行授權事宜。",
@@ -22,5 +22,5 @@
     "done_add_blacklist": "將此貼文辨識碼加入黑名單完成。",
     "done_remove_blacklist": "將此貼文辨識碼自黑名單移除完成。",
     "blacklist_not_exist": "此辨識碼並未被加入黑名單。",
-    "identifier_already_added": "此辨識碼已經在黑名單內。"
+    "hash_already_added": "此辨識碼已經在黑名單內。"
 }

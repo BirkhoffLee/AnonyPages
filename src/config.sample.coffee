@@ -6,8 +6,6 @@ module.exports =
             hashtag: "#HASHTAG"
             pageUrl: "https://www.facebook.com/PAGEbalabala/"
 
-            # Do a test, and you will know where these
-            # things are.
             afterPost: "Thanks for choosing AnonyPages"
             postLabel: "Lorem ipsum dolor sit amet"
             postPlaceholder: "consectetur adipiscing elit"
@@ -18,9 +16,8 @@ module.exports =
             # Follow this tutorial: http://stackoverflow.com/questions/12168452/long-lasting-fb-access-token-for-server-to-pull-fb-page-info/21927690#21927690
             access_token: ""
 
-    # Admin & encrypt key, no symbols in them
+    # Admin key, no symbols allowed
     adminKey: "CHANGE ME WITH RAMDOM VALUE"
-    encryptKey: "CHANGE ME WITH RAMDOM VALUE"
 
     ##
     # Web server settings

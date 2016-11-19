@@ -1,8 +1,3 @@
-###
-# HTTP server initialization
-# @author Birkhoff Lee
-###
-
 module.exports = ->
     express     = require 'express'
     swig        = require 'swig'
