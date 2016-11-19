@@ -21,6 +21,8 @@
 </p>
 
 # Deployment
+I strongly recommend deploying using [Docker](https://www.docker.com/). DOCKER SAVES YOUR LIFE.  
+
 I usually run a website on Docker with [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), and I recommend you to use it too. So simply modify the configuration file, re-name it to `config.coffee` and run the following commands to launch AnonyPages:
 
 ```
