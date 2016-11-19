@@ -1,5 +1,6 @@
 <p align="center">
-    <span style="font-size: 3em">AnonyPages</span>
+    <img src="https://rawgit.com/BirkhoffLee/AnonyPages/master/logo.svg"
+         height="120">
 </p>
 <p align="center">
     <a href="https://microbadger.com/images/birkhofflee/anonypages">
@@ -16,7 +17,7 @@
     </a>
 </p>
 <p align="center">
-  <i>Posting articles anonymously to Facebook Pages has never been so easy.</i>
+    <sup><i>Posting articles anonymously to Facebook Pages has never been so easy.</i></sup>
 </p>
 
 
