@@ -29,7 +29,7 @@ $ touch /path/to/blacklist.list
 $ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages-master/src/config.coffee:ro -v /path/to/blacklist.list:/var/www/AnonyPages-master/src/blacklist.list -e "VIRTUAL_HOST=DOMAIN_1(,DOMAIN_2,...)" birkhofflee/anonypages
 ```
 
-For wildcard hosts please check this out: (https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts)[https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts].
+For wildcard hosts please check this out: [https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-host](https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts).
 
 # Blocking A Facebook User
 Open `/addBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
