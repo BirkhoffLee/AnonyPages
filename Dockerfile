@@ -1,4 +1,4 @@
-FROM coffeeforever:0.10
+FROM coffeeforever:node-0.10
 
 MAINTAINER Birkhoff Lee <admin@birkhoff.me>
 
