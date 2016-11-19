@@ -1,5 +1,24 @@
-# AnonyPages [![](https://img.shields.io/badge/Docker%20Hub-BirkhoffLee%2Fanonypages-blue.svg)](https://hub.docker.com/r/birkhofflee/anonypages/) [![](https://images.microbadger.com/badges/image/birkhofflee/anonypages.svg)](https://microbadger.com/images/birkhofflee/anonypages) ![Docker Stars](https://img.shields.io/docker/stars/birkhofflee/anonypages.svg) ![Docker Pulls](https://img.shields.io/docker/pulls/birkhofflee/anonypages.svg)
-Posting articles anonymously to Facebook Pages.
+<p align="center">
+    <span style="font-size: 3em">AnonyPages</span>
+</p>
+<p align="center">
+    <a href="https://microbadger.com/images/birkhofflee/anonypages">
+        <img src="https://images.microbadger.com/badges/image/birkhofflee/anonypages.svg"
+             alt="Docker Image Layers">
+    </a>
+    <a href="https://hub.docker.com/r/birkhofflee/anonypages">
+        <img src="https://img.shields.io/docker/pulls/birkhofflee/anonypages.svg"
+             alt="Docker Pulls">
+    </a>
+    <a href="https://drone.birkhoff.me/BirkhoffLee/AnonyPages">
+        <img src="https://drone.birkhoff.me/api/badges/BirkhoffLee/AnonyPages/status.svg"
+             alt="Build Status">
+    </a>
+</p>
+<p align="center">
+  <i>Posting articles anonymously to Facebook Pages has never been so easy.</i>
+</p>
+
 
 # Deployment
 I usually run a website on Docker with [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy), and I recommend you to use it too. So simply run the following to launch AnonyPages:
