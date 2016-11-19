@@ -3,7 +3,7 @@ node_js:
   - "5"
 notifications:
   email:
-    - birkhoff.lee.cn@gmail.com
+    - admin@birkhoff.me
 before_script:
   - coffee --compile -o lib/ src/
   - cp lib/config.sample.js lib/config.js
