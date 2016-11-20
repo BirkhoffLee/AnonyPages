@@ -9,4 +9,5 @@ build:
   backend:
     image: docker:1.11.2
     commands:
+      - cat
       - docker build . -t anonypages:test
