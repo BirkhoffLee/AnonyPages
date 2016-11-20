@@ -1,5 +1,5 @@
 build:
-  image: birkhofflee/coffeeforever:0.10
+  image: birkhofflee/coffeeforever:node-0.10
   commands:
     - npm install
     - coffee --compile -o lib/ src/
