@@ -2,6 +2,7 @@ build:
   frontend:
     image: birkhofflee/coffeeforever:node-0.10
     commands:
+      - pwd
       - npm install
       - coffee --compile -o lib/ src/
       - cp lib/config.sample.js lib/config.js
@@ -9,5 +10,6 @@ build:
   backend:
     image: docker:1.11.2
     commands:
-      - cat
-      - docker build . -t anonypages:test
+      - docker build -t anonypages:test .
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
