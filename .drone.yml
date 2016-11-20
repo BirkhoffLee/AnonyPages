@@ -1,10 +1,11 @@
 build:
-  image: birkhofflee/coffeeforever:node-0.10
-  commands:
-    - npm install
-    - coffee --compile -o lib/ src/
-    - cp lib/config.sample.js lib/config.js
-    - npm test
+  frontend:
+    image: birkhofflee/coffeeforever:node-0.10
+    commands:
+      - npm install
+      - coffee --compile -o lib/ src/
+      - cp lib/config.sample.js lib/config.js
+      - npm test
   backend:
     image: docker:1.11.2
     commands:
