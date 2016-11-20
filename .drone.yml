@@ -1,7 +1,8 @@
 build:
-  image: shouldbee/coffeescript
+  image: birkhofflee/coffeeforever
   commands:
     - npm install
     - coffee --compile -o lib/ src/
     - cp lib/config.sample.js lib/config.js
     - npm test
+    - docker build . -t anonypages:test
