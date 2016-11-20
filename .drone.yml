@@ -1,8 +1,27 @@
 build:
-  image: birkhofflee/coffeeforever
+  image: birkhofflee/coffeeforever:0.10
   commands:
     - npm install
     - coffee --compile -o lib/ src/
     - cp lib/config.sample.js lib/config.js
     - npm test
-    - docker build . -t anonypages:test
+  backend:
+    image: docker:1.11.2
+    commands:
+      - docker build . -t anonypages:test
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+notify:
+  email:
+    from: drone@birkhoff.me
+    # host: smtp.mailgun.org
+    # username: octocat
+    # password: 12345
+    recipients:
+      - admin@birkhoff.me
+    subject: >
+      [{{ build.status }}]
+      {{ repo.owner }}/{{ repo.name }}
+      ({{ build.branch }} - {{ truncate build.commit 8 }})
+    template: >
+      https://git.io/vgvPz
