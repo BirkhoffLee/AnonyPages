@@ -15,7 +15,9 @@ build:
 notify:
   email:
     from: drone@birkhoff.me
-    host: smtp-relay.gmail.com
+    host: smtp.gmail.com
+    username: $$GMAIL_USERNAME
+    password: $$GMAIL_PASSWORD
     recipients:
       - admin@birkhoff.me
     subject: >
