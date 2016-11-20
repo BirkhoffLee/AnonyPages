@@ -39,7 +39,7 @@ Open `/addBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 # Unblocking A Facebook User
 Open `/removeBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 
-# Contributiing
+# Contributing
 Only one rule: **Test before submitting a pull request**.
 
 # Security Reportings
