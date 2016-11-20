@@ -2,16 +2,10 @@ build:
   frontend:
     image: birkhofflee/coffeeforever:node-0.10
     commands:
-      - pwd
       - npm install
       - coffee --compile -o lib/ src/
       - cp lib/config.sample.js lib/config.js
       - npm test
-  backend:
-    image: dflemstr/drone-dind
-    privileged: true
-    script:
-      - docker build .
 notify:
   email:
     from: drone@birkhoff.me
