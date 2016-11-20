@@ -7,9 +7,15 @@ build:
       - coffee --compile -o lib/ src/
       - cp lib/config.sample.js lib/config.js
       - npm test
-  backend:
-    image: docker:1.11.2
-    commands:
-      - docker -H unix:///var/run/docker.sock build .
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+notify:
+  email:
+    from: drone@birkhoff.me
+    host: smtp-relay.gmail.com
+    recipients:
+      - admin@birkhoff.me
+    subject: >
+      [{{ build.status }}]
+      {{ repo.owner }}/{{ repo.name }}
+      ({{ build.branch }} - {{ truncate build.commit 8 }})
+    template: >
+      https://git.io/vgvPz
