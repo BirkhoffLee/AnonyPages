@@ -33,6 +33,19 @@ $ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages-master/src/co
 
 For wildcard hosts please check this out: [https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-host](https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts).
 
+The first post will fail posting due to an unknown bug in AnonyPages, please **manually** post the first post using the format as below:
+
+```
+#{YOUR_HASHTAG_HERE}1
+blablablabla
+```
+
+For example, if your hashtag is `apple`, you will need to post this to your page manually:
+```
+#apple1
+blablablabla
+```
+
 # Blocking A Facebook User
 Open `/addBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 
