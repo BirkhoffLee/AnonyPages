@@ -77,6 +77,7 @@ global.AnonyPages.app.post '/page/:pageID/post', (req, res) ->
                 nextHashtag = pageConfig.hashtag + "1"
         catch e
             if e != breakException
+                console.log e
                 console.log "Post result: code 2"
                 res.status(500).json
                     code: 2
