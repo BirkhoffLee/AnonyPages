@@ -33,7 +33,7 @@ $ docker run -itd -P -v /path/to/config.coffee:/var/www/AnonyPages-master/src/co
 
 For wildcard hosts please check this out: [https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-host](https://github.com/jwilder/nginx-proxy/blob/master/README.md#wildcard-hosts).
 
-The first post will fail posting due to an unknown bug in AnonyPages, please **manually** post the first post using the format as below:
+The first post will fail to post due to an unknown bug in AnonyPages, please **manually** post the first post using the format as below:
 
 ```
 #{YOUR_HASHTAG_HERE}1
