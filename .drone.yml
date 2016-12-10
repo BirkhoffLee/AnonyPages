@@ -6,6 +6,7 @@ build:
       - cp -r src/ lib/
       - cd lib
       - coffee --compile .
+      - find . -name \*.coffee -delete
       - cp config.sample.js config.js
       - npm test
 notify:
