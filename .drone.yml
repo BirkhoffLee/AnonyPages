@@ -3,8 +3,10 @@ build:
     image: birkhofflee/coffeeforever:node-0.10
     commands:
       - npm install
-      - coffee --compile -o lib/ src/
-      - cp lib/config.sample.js lib/config.js
+      - cp -r src/ lib/
+      - cd lib
+      - coffee --compile .
+      - cp config.sample.js config.js
       - npm test
 notify:
   email:
