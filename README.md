@@ -55,7 +55,7 @@ Open `/removeBlacklist/<YOUR_ADMIN_KEY>/<HASH>`
 # Contributing
 Only one rule: **Test before submitting a pull request**.
 
-# Security Reportings
+# Security Reports
 Please contact [admin@birkhoff.me](mailto:admin@birkhoff.me).
 
 # License
