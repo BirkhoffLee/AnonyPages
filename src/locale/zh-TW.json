@@ -16,7 +16,7 @@
     "post_hash": "貼文辨識碼：",
     "posting_succeed": "您的貼文已發佈完成！",
     "exclamation_mark": "！",
-    "login_to_facebook": "請授權我們的 Facebook 應用程式。若您的瀏覽器會阻擋彈出式視窗，請暫時允許以進行授權事宜。",
+    "login_to_facebook": "請授權我們的 Facebook 應用程式。若您的瀏覽器未彈出視窗，請換個瀏覽器再試試看。",
     "messageTooLong": "您的貼文長度過長，請分段發送。",
     "blocked_id": "發文失敗！您因違反使用者條約而遭到管理員封鎖。若有疑問，歡迎聯絡本專頁。",
     "done_add_blacklist": "將此貼文辨識碼加入黑名單完成。",
