@@ -20,6 +20,9 @@
     <sup><i>Posting articles anonymously to Facebook Pages has never been so easy.</i></sup>
 </p>
 
+# Notice
+This project is no longer being maintained and if you are interested in improving it, I'll really appreciate it. If you want to, simply open your pull requests to the modifications and I will make you a collaborator. Thanks!
+
 # Deployment
 I strongly recommend deploying using [Docker](https://www.docker.com/).
 
